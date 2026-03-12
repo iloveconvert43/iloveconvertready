@@ -614,49 +614,140 @@ dz.addEventListener('dragleave',()=>dz.style.borderColor='');
 dz.addEventListener('drop',e=>{e.preventDefault();dz.style.borderColor='';load(e.dataTransfer.files[0])});
 fi.addEventListener('change',e=>load(e.target.files[0]));
 let vidFile=null;
-function load(f){if(!f||!f.type.startsWith('video/'))return;vidFile=f;vid.src=URL.createObjectURL(f);document.getElementById('settings').style.display='block';dz.style.display='none';toast('Video loaded! Set options and create GIF.');}
+
+function load(f){
+  if(!f||!f.type.startsWith('video/'))return;
+  vidFile=f;vid.src=URL.createObjectURL(f);
+  document.getElementById('settings').style.display='block';
+  dz.style.display='none';
+  toast('Video loaded! Set options and create GIF.');
+}
 function prog(on,lbl){const w=document.getElementById('pw');w.classList[on?'add':'remove']('on');if(lbl)document.getElementById('pl').textContent=lbl;}
 function pct(p,l){document.getElementById('pf').style.width=p+'%';if(l)document.getElementById('pl').textContent=l;}
 function toast(m,t='ok'){const el=document.getElementById('toast');el.textContent=(t==='err'?'❌ ':'✅ ')+m;el.className='on';setTimeout(()=>el.className='',3500);}
+function fmt(b){if(!b)return'0 B';const k=1024,s=['B','KB','MB'],i=Math.floor(Math.log(b)/Math.log(k));return(b/Math.pow(k,i)).toFixed(1)+' '+s[i];}
+
+// Get gif.worker.js as a blob URL to avoid mobile CORS restrictions
+let gifWorkerBlobUrl = null;
+async function getWorkerUrl(){
+  if(gifWorkerBlobUrl) return gifWorkerBlobUrl;
+  try{
+    const res = await fetch('https://cdn.jsdelivr.net/npm/gif.js@0.2.0/dist/gif.worker.js');
+    const txt = await res.text();
+    const blob = new Blob([txt],{type:'application/javascript'});
+    gifWorkerBlobUrl = URL.createObjectURL(blob);
+    return gifWorkerBlobUrl;
+  }catch(e){
+    // If fetch fails, use the CDN URL directly as last resort
+    return 'https://cdn.jsdelivr.net/npm/gif.js@0.2.0/dist/gif.worker.js';
+  }
+}
+
+async function seekTo(video, time){
+  return new Promise(resolve=>{
+    const onSeeked=()=>{video.removeEventListener('seeked',onSeeked);resolve();};
+    video.addEventListener('seeked',onSeeked);
+    video.currentTime=time;
+  });
+}
+
 async function makeGif(){
+  if(!vid.src){toast('Please load a video first','err');return;}
   const start=parseFloat(document.getElementById('start').value)||0;
   const dur=Math.min(10,parseFloat(document.getElementById('dur').value)||3);
   const fps=parseInt(document.getElementById('fps').value)||15;
   const gw=parseInt(document.getElementById('gwidth').value)||480;
   const quality=parseInt(document.getElementById('qual').value)||5;
   const totalFrames=Math.ceil(dur*fps);
-  prog(true,'Capturing frames...');pct(5);
+  
+  prog(true,'Preparing...');pct(2);
   
   try{
+    // Ensure video is ready
+    if(vid.readyState < 2){
+      await new Promise(r=>{vid.addEventListener('loadeddata',r,{once:true});});
+    }
+    
     const canvas=document.createElement('canvas');
-    const aspect=vid.videoHeight/vid.videoWidth;
-    canvas.width=gw;canvas.height=Math.round(gw*aspect);
+    const aspect=vid.videoHeight/vid.videoWidth||0.5625;
+    canvas.width=gw;
+    canvas.height=Math.round(gw*aspect);
     const ctx=canvas.getContext('2d');
     
-    const gif=new GIF({workers:2,quality,width:canvas.width,height:canvas.height,workerScript:'https://cdn.jsdelivr.net/npm/gif.js@0.2.0/dist/gif.worker.js'});
+    // Pause video before seeking to prevent conflicts
+    vid.pause();
+    
+    // Pre-capture all frames first (avoids gif.js timing issues)
+    pct(5,'Capturing frames...');
+    const frames=[];
+    for(let i=0;i<totalFrames;i++){
+      const t=start+(i/fps);
+      await seekTo(vid,t);
+      ctx.drawImage(vid,0,0,canvas.width,canvas.height);
+      // Get pixel data copy
+      const imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
+      frames.push(imgData);
+      pct(5+Math.round(i/totalFrames*55),'Captured frame '+(i+1)+'/'+totalFrames);
+    }
+    
+    pct(60,'Getting encoder ready...');
+    const workerUrl=await getWorkerUrl();
+    
+    const gif=new GIF({
+      workers:1,
+      quality:quality,
+      width:canvas.width,
+      height:canvas.height,
+      workerScript:workerUrl,
+      repeat:0
+    });
     
     const delay=Math.round(1000/fps);
-    for(let i=0;i<totalFrames;i++){
-      pct(5+i/totalFrames*70,'Frame '+(i+1)+'/'+totalFrames);
-      vid.currentTime=start+(i/fps);
-      await new Promise(r=>{const h=()=>{vid.removeEventListener('seeked',h);r()};vid.addEventListener('seeked',h)});
-      ctx.drawImage(vid,0,0,canvas.width,canvas.height);
-      gif.addFrame(ctx,{copy:true,delay});
+    pct(65,'Adding frames to encoder...');
+    for(let i=0;i<frames.length;i++){
+      // Draw frame onto canvas then add
+      ctx.putImageData(frames[i],0,0);
+      gif.addFrame(ctx,{copy:true,delay:delay});
     }
-    pct(75,'Encoding GIF...');
-    gif.on('progress',p=>pct(75+p*24,'Encoding GIF '+(p*100).toFixed(0)+'%...'));
+    
+    pct(75,'Encoding GIF — please wait...');
+    
+    gif.on('progress',p=>{
+      pct(75+Math.round(p*24),'Encoding GIF '+Math.round(p*100)+'%...');
+    });
+    
     gif.on('finished',blob=>{
-      pct(100);prog(false);
+      pct(100,'Done!');
+      prog(false);
       const url=URL.createObjectURL(blob);
       const r=document.getElementById('res');
-      r.innerHTML='<span style="font-size:2.8rem;display:block;margin-bottom:10px">✅</span><h3 style="font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:8px">GIF created! '+fmt(blob.size)+'</h3><img alt="iLoveConvert preview" src="'+url+'" style="max-width:100%;border-radius:8px;margin:10px 0"/><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px"><a href="'+url+'" download="video.gif" class="btn ba bl">⬇️ Download GIF</a><button onclick="document.getElementById(\'res\').classList.remove(\'on\')" class="btn bo bl">🔄 New</button></div>';
-      r.classList.add('on');r.scrollIntoView({behavior:'smooth',block:'center'});
-      toast('GIF created! '+fmt(blob.size));
+      r.innerHTML=
+        '<span style="font-size:2.8rem;display:block;margin-bottom:10px">✅</span>'+
+        '<h3 style="font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:8px">GIF created! '+fmt(blob.size)+'</h3>'+
+        '<img alt="Animated GIF preview" src="'+url+'" style="max-width:100%;border-radius:8px;margin:10px 0"/>'+
+        '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px">'+
+        '<a href="'+url+'" download="output.gif" class="btn ba bl">⬇️ Download GIF</a>'+
+        '<button onclick="document.getElementById('res').classList.remove('on')" class="btn bo bl">🔄 New GIF</button>'+
+        '</div>';
+      r.classList.add('on');
+      r.scrollIntoView({behavior:'smooth',block:'center'});
+      toast('GIF ready! '+fmt(blob.size));
     });
+    
+    gif.on('error',err=>{
+      prog(false);
+      toast('Encoding error: '+(err||'Unknown'),'err');
+      console.error('GIF error:',err);
+    });
+    
     gif.render();
-  }catch(e){prog(false);toast('GIF creation failed: '+e.message,'err');console.error(e);}
+    
+  }catch(e){
+    prog(false);
+    toast('Failed: '+e.message,'err');
+    console.error('GIF creation error:',e);
+  }
 }
-function fmt(b){if(!b)return'0 B';const k=1024,s=['B','KB','MB'],i=Math.floor(Math.log(b)/Math.log(k));return(b/Math.pow(k,i)).toFixed(1)+' '+s[i];}
 </script>
 
 <div style="max-width:900px;margin:0 auto;padding:0 24px 48px">
