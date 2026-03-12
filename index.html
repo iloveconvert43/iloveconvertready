@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0"/>
+<title>iLoveConvert – Free Online PDF, Image, Video & File Converter Tools</title>
+<meta name="description" content="50+ free online tools for PDF, image, video, QR codes and developers. Convert, compress, merge, edit files instantly in your browser. No signup, 100% private."/>
+<meta name="keywords" content="free online converter, pdf tools, image converter, video converter, pdf editor, compress pdf, merge pdf, qr code generator, file converter online free"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://iloveconvert.app/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="iLoveConvert – 50+ Free Online File Tools"/>
+<meta property="og:description" content="Convert PDF, images, videos and more. Free, private, browser-based."/>
+<meta property="og:url" content="https://iloveconvert.app/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23e53e3e'/><stop offset='100%25' stop-color='%237c3aed'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text y='.9em' font-size='66' x='17'>❤️</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script>
+// Apply theme IMMEDIATELY to avoid flash
+(function(){
+  var t=localStorage.getItem('ilc_theme');
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+})();
+</script>
+<style>
+/* TOKENS */
+:root{
+  --bg:#f7f8fc;--card:#fff;--surf:#f0f1f8;--brd:#e4e5f0;--brd-h:#c5c7de;
+  --txt:#12132a;--txt2:#52546e;--txt3:#9699b8;
+  --red:#e53e3e;--purple:#7c3aed;
+  --grad:linear-gradient(135deg,#e53e3e,#7c3aed);
+  --grad-s:linear-gradient(135deg,rgba(229,62,62,.08),rgba(124,58,237,.06));
+  --shadow:0 1px 3px rgba(18,19,42,.06),0 4px 16px rgba(18,19,42,.05);
+  --shadow-h:0 8px 32px rgba(18,19,42,.12);
+  --nav-bg:rgba(255,255,255,.97);--nav-brd:rgba(0,0,0,.07);
+  --fh:"Syne",system-ui,sans-serif;--fb:"Plus Jakarta Sans",system-ui,sans-serif;
+  --t:.2s cubic-bezier(.4,0,.2,1);
+}
+[data-theme="dark"]{
+  --bg:#050508;--card:#0f0f1a;--surf:#0a0a10;--brd:rgba(255,255,255,.08);--brd-h:rgba(255,255,255,.18);
+  --txt:#eeeef5;--txt2:#8888a8;--txt3:#444460;
+  --shadow:0 1px 3px rgba(0,0,0,.4),0 4px 16px rgba(0,0,0,.3);
+  --shadow-h:0 8px 32px rgba(0,0,0,.5);
+  --nav-bg:rgba(5,5,8,.97);--nav-brd:rgba(255,255,255,.07);
+  --grad-s:linear-gradient(135deg,rgba(229,62,62,.12),rgba(124,58,237,.1));
+}
+/* RESET */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--fb);cursor:pointer;border:none;background:none}
+
+/* ── DARK MODE MODAL ── */
+.tm-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;animation:fi .3s ease}
+.tm-overlay.hidden{display:none}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+.tm-card{background:var(--card);border:1.5px solid var(--brd);border-radius:20px;padding:36px 28px;max-width:400px;width:100%;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.2);animation:su .32s cubic-bezier(.22,1,.36,1)}
+@keyframes su{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+.tm-emoji{font-size:2.8rem;display:block;margin-bottom:14px}
+.tm-card h2{font-family:var(--fh);font-size:1.4rem;font-weight:800;color:var(--txt);margin-bottom:8px}
+.tm-card p{font-size:.86rem;color:var(--txt2);margin-bottom:22px;line-height:1.65}
+.tm-btns{display:flex;flex-direction:column;gap:9px}
+.tm-yes{padding:12px;border-radius:10px;background:var(--grad);color:#fff;font-size:.87rem;font-weight:700;cursor:pointer;border:none;font-family:var(--fb);transition:var(--t)}
+.tm-yes:hover{filter:brightness(1.08)}
+.tm-no{padding:11px;border-radius:10px;border:1.5px solid var(--brd);color:var(--txt2);font-size:.84rem;font-weight:600;cursor:pointer;background:transparent;font-family:var(--fb);transition:var(--t)}
+.tm-no:hover{border-color:var(--brd-h);color:var(--txt)}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:400;height:62px;background:var(--nav-bg);border-bottom:1px solid var(--nav-brd);backdrop-filter:blur(20px);display:flex;align-items:center;padding:0 22px;gap:12px;transition:background .3s,border-color .3s,box-shadow .3s}
+.logo{display:flex;align-items:center;gap:8px;flex-shrink:0;font-family:var(--fh);font-size:1.05rem;font-weight:800}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.logo span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin-left:8px}
+.nav-links a{padding:6px 11px;border-radius:7px;font-size:.8rem;font-weight:600;color:var(--txt2);transition:var(--t)}
+.nav-links a:hover{color:var(--txt);background:var(--surf)}
+.nav-sp{flex:1}
+/* search */
+.nav-srch{position:relative;max-width:200px}
+.nav-srch input{width:100%;padding:7px 11px 7px 33px;background:var(--surf);border:1.5px solid var(--brd);border-radius:8px;font-size:.79rem;color:var(--txt);font-family:var(--fb);outline:none;transition:var(--t)}
+.nav-srch input::placeholder{color:var(--txt3)}
+.nav-srch input:focus{border-color:var(--red);background:var(--card)}
+.nav-srch-ic{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--txt3);font-size:.8rem;pointer-events:none}
+.nav-theme-btn{width:36px;height:36px;border-radius:8px;background:var(--surf);border:1.5px solid var(--brd);display:flex;align-items:center;justify-content:center;font-size:.95rem;cursor:pointer;transition:var(--t);flex-shrink:0}
+.nav-theme-btn:hover{border-color:var(--brd-h)}
+.nav-cta{padding:7px 15px;border-radius:8px;font-size:.8rem;font-weight:700;background:var(--grad);color:#fff;transition:var(--t);flex-shrink:0;white-space:nowrap}
+.nav-cta:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.nav-ham{display:none;width:36px;height:36px;border-radius:8px;background:var(--surf);border:1.5px solid var(--brd);flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;flex-shrink:0;transition:var(--t)}
+.nav-ham span{display:block;width:16px;height:2px;border-radius:1px;background:var(--txt2);transition:var(--t)}
+/* mobile drawer */
+.mob-drawer{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;z-index:390;background:var(--card);border-top:1px solid var(--brd);padding:14px;flex-direction:column;gap:3px;overflow-y:auto;animation:mnIn .22s ease}
+@keyframes mnIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.mob-drawer.open{display:flex}
+.mob-drawer a{padding:12px 14px;border-radius:10px;font-size:.9rem;font-weight:600;color:var(--txt2);display:block;transition:var(--t)}
+.mob-drawer a:hover{background:var(--surf);color:var(--txt)}
+.mob-div{height:1px;background:var(--brd);margin:6px 0}
+/* search dropdown */
+.srch-drop{display:none;position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card);border:1.5px solid var(--brd);border-radius:12px;box-shadow:var(--shadow-h);padding:6px;z-index:500;max-height:280px;overflow-y:auto;min-width:280px}
+.srch-drop.open{display:block}
+.sd-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;color:inherit;transition:var(--t)}
+.sd-item:hover{background:var(--surf)}
+.sd-ic{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.sd-name{font-size:.83rem;font-weight:600;color:var(--txt)}
+.sd-cat{font-size:.7rem;color:var(--txt3)}
+.sd-empty{padding:14px;text-align:center;color:var(--txt3);font-size:.82rem}
+
+/* ── HERO ── */
+.hero{padding:72px 24px 60px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(229,62,62,.07) 0%,rgba(124,58,237,.05) 50%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,rgba(229,62,62,.1),rgba(124,58,237,.08));border:1px solid rgba(229,62,62,.2);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--red);margin-bottom:20px}
+h1.hero-h1{font-family:var(--fh);font-size:clamp(2.1rem,5vw,3.5rem);font-weight:800;line-height:1.12;letter-spacing:-.03em;color:var(--txt);margin-bottom:14px}
+h1.hero-h1 .g{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(.88rem,2.5vw,1.05rem);color:var(--txt2);max-width:500px;margin:0 auto 34px;line-height:1.75}
+/* hero search */
+.hero-srch{max-width:580px;margin:0 auto 26px;position:relative}
+.hero-srch input{width:100%;padding:15px 130px 15px 50px;background:var(--card);border:2px solid var(--brd);border-radius:14px;font-size:.97rem;color:var(--txt);font-family:var(--fb);outline:none;box-shadow:var(--shadow);transition:var(--t)}
+.hero-srch input::placeholder{color:var(--txt3)}
+.hero-srch input:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(229,62,62,.1),var(--shadow)}
+.hero-srch-ic{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--txt3);font-size:1.1rem;pointer-events:none}
+.hero-srch-btn{position:absolute;right:7px;top:50%;transform:translateY(-50%);padding:8px 18px;border-radius:9px;background:var(--grad);color:#fff;font-size:.8rem;font-weight:700;cursor:pointer;border:none;font-family:var(--fb);transition:var(--t)}
+.hero-srch-btn:hover{filter:brightness(1.08)}
+/* pills */
+.pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:38px}
+.pill{padding:7px 15px;border-radius:20px;font-size:.79rem;font-weight:600;background:var(--card);border:1.5px solid var(--brd);color:var(--txt2);cursor:pointer;transition:var(--t)}
+.pill:hover,.pill.act{border-color:var(--red);color:var(--red);background:rgba(229,62,62,.05)}
+/* stats */
+.hero-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+.hs-n{font-family:var(--fh);font-size:1.8rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hs-l{font-size:.72rem;color:var(--txt3);font-weight:600;margin-top:1px}
+
+/* ── HOW IT WORKS ── */
+.how{padding:72px 24px;background:var(--card);transition:background .3s}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:40px}
+.how-step{background:var(--bg);border:1.5px solid var(--brd);border-radius:18px;padding:28px 22px;position:relative;overflow:hidden;opacity:0;transform:translateY(20px);transition:opacity .55s,transform .55s,background .3s,border-color .3s}
+.how-step.vis{opacity:1;transform:none}
+.how-step::before{content:"";position:absolute;top:-40px;right:-40px;width:110px;height:110px;border-radius:50%;background:var(--grad-s);pointer-events:none}
+.step-n{font-family:var(--fh);font-size:2.8rem;font-weight:800;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
+.step-ic{font-size:1.7rem;margin-bottom:10px;display:block}
+.step-t{font-family:var(--fh);font-size:1.02rem;font-weight:700;color:var(--txt);margin-bottom:6px}
+.step-d{font-size:.81rem;color:var(--txt2);line-height:1.65}
+
+/* ── SECTIONS ── */
+.sec{padding:56px 24px;transition:background .3s}
+.sec.alt{background:var(--surf)}
+.cnt{max-width:1100px;margin:0 auto}
+.sec-hdr{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:26px;gap:14px;flex-wrap:wrap}
+.sec-lbl{font-size:.67rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--txt3);margin-bottom:5px}
+.sec-ttl{font-family:var(--fh);font-size:clamp(1.2rem,3vw,1.7rem);font-weight:800;color:var(--txt);letter-spacing:-.03em;line-height:1.2}
+.exp-link{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:700;color:var(--txt2);padding:8px 15px;border-radius:9px;border:1.5px solid var(--brd);transition:var(--t);white-space:nowrap}
+.exp-link:hover{border-color:var(--brd-h);color:var(--txt);background:var(--card)}
+.arr{transition:transform .18s}
+.exp-link:hover .arr{transform:translateX(3px)}
+.sec-ctr{text-align:center}
+.sec-sub{font-size:.93rem;color:var(--txt2);max-width:460px;margin:.5em auto 0;line-height:1.65}
+
+/* ── TOOL CARDS ── */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:13px}
+.tc{background:var(--card);border-radius:14px;border:1.5px solid var(--brd);padding:20px;display:flex;flex-direction:column;gap:11px;transition:var(--t),background .3s,border-color .3s;position:relative;overflow:hidden;box-shadow:var(--shadow);color:inherit}
+.tc::after{content:"";position:absolute;inset:0;border-radius:14px;background:var(--grad-s);opacity:0;transition:opacity .25s}
+.tc:hover{border-color:var(--brd-h);transform:translateY(-3px);box-shadow:var(--shadow-h)}
+.tc:hover::after{opacity:1}
+.tc-ic{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;position:relative;z-index:1;flex-shrink:0}
+.tc-bd{position:relative;z-index:1}
+.tc-nm{font-size:.88rem;font-weight:700;color:var(--txt);margin-bottom:3px}
+.tc-ds{font-size:.74rem;color:var(--txt2);line-height:1.5}
+.tc-badge{position:absolute;top:11px;right:11px;font-size:.57rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:3px 7px;border-radius:20px;z-index:2}
+.bf{background:rgba(34,197,94,.12);color:#16a34a}
+.bs{background:rgba(245,158,11,.14);color:#b45309}
+.tc-cs{opacity:.72}
+.tc-arr{position:absolute;bottom:13px;right:13px;z-index:2;width:26px;height:26px;border-radius:7px;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.8rem;opacity:0;transform:scale(.7);transition:var(--t)}
+.tc:hover .tc-arr{opacity:1;transform:scale(1)}
+
+/* ── WHY US ── */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:40px}
+.wc{background:var(--card);border:1.5px solid var(--brd);border-radius:18px;padding:26px 22px;transition:var(--t),background .3s,border-color .3s;opacity:0;transform:translateY(20px)}
+.wc.vis{opacity:1;transform:none}
+.wc:hover{border-color:var(--brd-h);transform:translateY(-3px);box-shadow:var(--shadow-h)}
+.wc-ic{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:15px;background:var(--grad-s)}
+.wc-t{font-family:var(--fh);font-size:.98rem;font-weight:700;color:var(--txt);margin-bottom:6px}
+.wc-d{font-size:.8rem;color:var(--txt2);line-height:1.65}
+
+/* ── CTA BANNER ── */
+.cta-bn{margin:56px auto;max-width:1100px;border-radius:20px;background:var(--grad);padding:52px 32px;text-align:center;position:relative;overflow:hidden}
+.cta-bn::before{content:"";position:absolute;top:-60px;right:-60px;width:230px;height:230px;border-radius:50%;background:rgba(255,255,255,.08);pointer-events:none}
+.cta-bn h2{font-family:var(--fh);font-size:clamp(1.4rem,4vw,2.2rem);font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-.03em;position:relative;z-index:1}
+.cta-bn p{color:rgba(255,255,255,.82);font-size:.93rem;margin-bottom:22px;position:relative;z-index:1}
+.cta-btn{display:inline-flex;align-items:center;gap:7px;padding:13px 26px;border-radius:11px;background:#fff;color:var(--red);font-size:.88rem;font-weight:800;transition:var(--t);position:relative;z-index:1}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+
+/* ── FOOTER ── */
+footer{background:#12132a;padding:52px 24px 28px;font-family:var(--fb)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:28px;max-width:1080px;margin:0 auto 32px}
+.ft-brand .fbl{display:flex;align-items:center;gap:7px;font-family:var(--fh);font-size:1rem;font-weight:800;color:#fff;margin-bottom:10px}
+.ft-brand p{font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:240px}
+.ft-col h4{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.3);margin-bottom:12px}
+.ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:7px;transition:.15s}
+.ft-col a:hover{color:#fff}
+.ft-btm{max-width:1080px;margin:0 auto;padding-top:20px;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.ft-btm p{font-size:.7rem;color:rgba(255,255,255,.28)}
+.ft-links{display:flex;gap:14px}
+.ft-links a{font-size:.7rem;color:rgba(255,255,255,.28);transition:.15s}
+.ft-links a:hover{color:rgba(255,255,255,.7)}
+
+/* RESPONSIVE */
+@media(max-width:768px){.nav-links,.nav-srch,.nav-cta{display:none}.nav-ham{display:flex}.tgrid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}.hero{padding:50px 18px 44px}.hero-stats{gap:22px}.hs-n{font-size:1.45rem}.ft-grid{grid-template-columns:1fr 1fr}.how-grid,.why-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.tgrid{grid-template-columns:1fr 1fr}.ft-grid{grid-template-columns:1fr}.ft-btm{flex-direction:column;text-align:center}.sec-hdr{flex-direction:column;align-items:flex-start}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"iLoveConvert","url":"https://iloveconvert.app","description":"50+ free browser-based tools for PDF, image, video, QR and developer tasks."}</script>
+
+<style>@media(max-width:640px){input,select,textarea{font-size:16px!important}}</style>
+</head>
+<body>
+
+<!-- DARK MODE MODAL -->
+<div class="tm-overlay hidden" id="themeModal">
+  <div class="tm-card">
+    <span class="tm-emoji">🌙</span>
+    <h2>Enable Dark Mode?</h2>
+    <p>Switch to Dark Mode for a more comfortable experience, especially at night.</p>
+    <div class="tm-btns">
+      <button class="tm-yes" onclick="enableDark()">Yes, enable Dark Mode</button>
+      <button class="tm-no" onclick="stayLight()">No thanks, keep it light</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="logo"><div class="logo-mark">❤️</div><span>iLoveConvert</span></a>
+  <ul class="nav-links">
+    <li><a href="pdf-tools.html">PDF</a></li>
+    <li><a href="image-tools.html">Image</a></li>
+    <li><a href="video-tools.html">Video</a></li>
+    <li><a href="qr-tools.html">QR Codes</a></li>
+    <li><a href="developer-tools.html">Developer</a></li>
+  </ul>
+  <div class="nav-sp"></div>
+  <div class="nav-srch" style="position:relative">
+    <span class="nav-srch-ic">🔍</span>
+    <input type="text" placeholder="Search tools…" id="navIn" autocomplete="off" aria-label="Search tools"/>
+    <div id="navDrop" class="srch-drop"></div>
+  </div>
+  <button class="nav-theme-btn" id="mainThemeBtn" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+  <a href="pdf-editor.html" class="nav-cta">PDF Editor</a>
+  <button class="nav-ham" id="mainHamBtn" onclick="toggleMob()" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<nav class="mob-drawer" id="mobDrawer">
+  <a href="pdf-tools.html" onclick="closeMob()">📄 PDF Tools</a>
+  <a href="image-tools.html" onclick="closeMob()">🖼 Image Tools</a>
+  <a href="video-tools.html" onclick="closeMob()">🎬 Video Tools</a>
+  <a href="qr-tools.html" onclick="closeMob()">📱 QR &amp; Barcode</a>
+  <a href="developer-tools.html" onclick="closeMob()">⚙️ Developer Tools</a>
+  <div class="mob-div"></div>
+  <a href="about.html" onclick="closeMob()">About</a>
+  <a href="contact.html" onclick="closeMob()">Contact</a>
+  <a href="privacy.html" onclick="closeMob()">Privacy</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">✨ 50+ Free Tools — No Signup Required</div>
+  <h1 class="hero-h1">Convert &amp; Edit Files<br/>with <span class="g">One Click</span></h1>
+  <p class="hero-sub">PDF, images, video, QR codes — processed right in your browser. 100% free, 100% private, always.</p>
+  <div class="hero-srch" style="position:relative">
+    <span class="hero-srch-ic">🔍</span>
+    <input type="text" placeholder='Search — try "merge pdf" or "resize image"…' id="heroIn" autocomplete="off" aria-label="Search tools"/>
+    <button class="hero-srch-btn" onclick="document.getElementById('heroIn').dispatchEvent(new Event('input'))">Search</button>
+    <div id="heroDrop" class="srch-drop" style="min-width:100%;border-radius:14px;padding:8px;text-align:left"></div>
+  </div>
+  <div class="pills">
+    <button class="pill act" onclick="window.scrollTo({top:0,behavior:'smooth'})">All Tools</button>
+    <button class="pill" onclick="goSec('pdf')">📄 PDF</button>
+    <button class="pill" onclick="goSec('image')">🖼 Image</button>
+    <button class="pill" onclick="goSec('video')">🎬 Video</button>
+    <button class="pill" onclick="goSec('qr')">📱 QR &amp; Barcode</button>
+    <button class="pill" onclick="goSec('dev')">⚙️ Developer</button>
+  </div>
+  <div class="hero-stats">
+    <div><div class="hs-n">50+</div><div class="hs-l">Free Tools</div></div>
+    <div><div class="hs-n">0</div><div class="hs-l">Files Uploaded</div></div>
+    <div><div class="hs-n">100%</div><div class="hs-l">Private</div></div>
+    <div><div class="hs-n">₹0</div><div class="hs-l">Cost Forever</div></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="cnt sec-ctr">
+    <div class="sec-lbl">Simple &amp; Fast</div>
+    <div class="sec-ttl" style="font-size:clamp(1.3rem,3vw,1.8rem)">How It Works</div>
+    <p class="sec-sub">Three steps. No signup. No installation. Your files stay on your device.</p>
+    <div class="how-grid">
+      <div class="how-step" style="transition-delay:0s">
+        <div class="step-n">01</div><span class="step-ic">🗂</span>
+        <div class="step-t">Choose Your Tool</div>
+        <p class="step-d">Browse 50+ free tools across PDF, image, video, QR and developer categories. Search by name or click a category pill.</p>
+      </div>
+      <div class="how-step" style="transition-delay:.12s">
+        <div class="step-n">02</div><span class="step-ic">⬆️</span>
+        <div class="step-t">Upload Your File</div>
+        <p class="step-d">Drag &amp; drop or click to upload. Your file never leaves your device — processed entirely in your browser, 100% private.</p>
+      </div>
+      <div class="how-step" style="transition-delay:.24s">
+        <div class="step-n">03</div><span class="step-ic">⬇️</span>
+        <div class="step-t">Download Result</div>
+        <p class="step-d">Processing is instant. Click download and you are done — no waiting, no email, no account, no watermarks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PDF TOOLS -->
+<section class="sec" id="pdf">
+  <div class="cnt">
+    <div class="sec-hdr">
+      <div><div class="sec-lbl">Document Workflow</div><div class="sec-ttl">📄 PDF Tools</div></div>
+      <a href="pdf-tools.html" class="exp-link">All 19 PDF Tools <span class="arr">→</span></a>
+    </div>
+    <div class="tgrid">
+      <a href="pdf-editor.html" class="tc"><div class="tc-ic" style="background:rgba(229,62,62,.1);color:#e53e3e">✏️</div><div class="tc-bd"><div class="tc-nm">PDF Editor</div><div class="tc-ds">Edit, annotate &amp; sign PDFs</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="merge-pdf.html" class="tc"><div class="tc-ic" style="background:rgba(229,62,62,.1);color:#e53e3e">📑</div><div class="tc-bd"><div class="tc-nm">Merge PDF</div><div class="tc-ds">Combine multiple PDFs into one</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="compress-pdf.html" class="tc"><div class="tc-ic" style="background:rgba(229,62,62,.1);color:#e53e3e">🗜</div><div class="tc-bd"><div class="tc-nm">Compress PDF</div><div class="tc-ds">Reduce file size without quality loss</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="split-pdf.html" class="tc"><div class="tc-ic" style="background:rgba(229,62,62,.1);color:#e53e3e">✂️</div><div class="tc-bd"><div class="tc-nm">Split PDF</div><div class="tc-ds">Extract pages or split by ranges</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="pdf-to-jpg.html" class="tc"><div class="tc-ic" style="background:rgba(229,62,62,.1);color:#e53e3e">🖼</div><div class="tc-bd"><div class="tc-nm">PDF to JPG</div><div class="tc-ds">Convert PDF pages to images</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE TOOLS -->
+<section class="sec alt" id="image">
+  <div class="cnt">
+    <div class="sec-hdr">
+      <div><div class="sec-lbl">Visual Processing</div><div class="sec-ttl">🖼 Image Tools</div></div>
+      <a href="image-tools.html" class="exp-link">All 12 Image Tools <span class="arr">→</span></a>
+    </div>
+    <div class="tgrid">
+      <a href="image-compress.html" class="tc"><div class="tc-ic" style="background:rgba(14,165,233,.1);color:#0ea5e9">🗜</div><div class="tc-bd"><div class="tc-nm">Compress Image</div><div class="tc-ds">Shrink file size, keep quality</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="image-resize.html" class="tc"><div class="tc-ic" style="background:rgba(14,165,233,.1);color:#0ea5e9">↔️</div><div class="tc-bd"><div class="tc-nm">Resize Image</div><div class="tc-ds">Change to any dimension</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="image-convert.html" class="tc"><div class="tc-ic" style="background:rgba(14,165,233,.1);color:#0ea5e9">🔄</div><div class="tc-bd"><div class="tc-nm">Convert Image</div><div class="tc-ds">JPG, PNG, WebP, GIF &amp; more</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="image-crop.html" class="tc"><div class="tc-ic" style="background:rgba(14,165,233,.1);color:#0ea5e9">✂️</div><div class="tc-bd"><div class="tc-nm">Crop Image</div><div class="tc-ds">Crop to any ratio or free-form</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="remove-bg.html" class="tc tc-cs"><div class="tc-ic" style="background:rgba(14,165,233,.1);color:#0ea5e9">🪄</div><div class="tc-bd"><div class="tc-nm">Remove Background</div><div class="tc-ds">AI-powered background removal</div></div><div class="tc-badge bs">Soon</div><div class="tc-arr">→</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO TOOLS -->
+<section class="sec" id="video">
+  <div class="cnt">
+    <div class="sec-hdr">
+      <div><div class="sec-lbl">Media Editing</div><div class="sec-ttl">🎬 Video Tools</div></div>
+      <a href="video-tools.html" class="exp-link">All Video Tools <span class="arr">→</span></a>
+    </div>
+    <div class="tgrid">
+      <a href="video-to-mp3.html" class="tc"><div class="tc-ic" style="background:rgba(249,115,22,.1);color:#f97316">🎵</div><div class="tc-bd"><div class="tc-nm">Video to MP3</div><div class="tc-ds">Extract audio from any video</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="video-screenshot.html" class="tc"><div class="tc-ic" style="background:rgba(249,115,22,.1);color:#f97316">📸</div><div class="tc-bd"><div class="tc-nm">Video Screenshot</div><div class="tc-ds">Capture any frame from video</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="video-gif.html" class="tc"><div class="tc-ic" style="background:rgba(249,115,22,.1);color:#f97316">🎞</div><div class="tc-bd"><div class="tc-nm">Video to GIF</div><div class="tc-ds">Create animated GIF from video</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="video-trim.html" class="tc tc-cs"><div class="tc-ic" style="background:rgba(249,115,22,.1);color:#f97316">✂️</div><div class="tc-bd"><div class="tc-nm">Trim Video</div><div class="tc-ds">Cut clips to exact duration</div></div><div class="tc-badge bs">Soon</div><div class="tc-arr">→</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- QR TOOLS -->
+<section class="sec alt" id="qr">
+  <div class="cnt">
+    <div class="sec-hdr">
+      <div><div class="sec-lbl">Codes &amp; Barcodes</div><div class="sec-ttl">📱 QR &amp; Barcode</div></div>
+      <a href="qr-tools.html" class="exp-link">All QR Tools <span class="arr">→</span></a>
+    </div>
+    <div class="tgrid">
+      <a href="qr-generator.html" class="tc"><div class="tc-ic" style="background:rgba(234,179,8,.1);color:#ca8a04">📱</div><div class="tc-bd"><div class="tc-nm">QR Code Generator</div><div class="tc-ds">Create custom QR codes instantly</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="qr-scanner.html" class="tc"><div class="tc-ic" style="background:rgba(234,179,8,.1);color:#ca8a04">📷</div><div class="tc-bd"><div class="tc-nm">QR Scanner</div><div class="tc-ds">Scan QR codes with your camera</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="wifi-qr.html" class="tc"><div class="tc-ic" style="background:rgba(234,179,8,.1);color:#ca8a04">📶</div><div class="tc-bd"><div class="tc-nm">WiFi QR Code</div><div class="tc-ds">Share WiFi credentials via QR</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="barcode-gen.html" class="tc"><div class="tc-ic" style="background:rgba(234,179,8,.1);color:#ca8a04">📊</div><div class="tc-bd"><div class="tc-nm">Barcode Generator</div><div class="tc-ds">EAN, UPC, CODE128 barcodes</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- DEV TOOLS -->
+<section class="sec" id="dev">
+  <div class="cnt">
+    <div class="sec-hdr">
+      <div><div class="sec-lbl">Coding Utilities</div><div class="sec-ttl">⚙️ Developer Tools</div></div>
+      <a href="developer-tools.html" class="exp-link">All Dev Tools <span class="arr">→</span></a>
+    </div>
+    <div class="tgrid">
+      <a href="json-formatter.html" class="tc"><div class="tc-ic" style="background:rgba(34,197,94,.1);color:#16a34a;font-size:.82rem;font-weight:800">{}</div><div class="tc-bd"><div class="tc-nm">JSON Formatter</div><div class="tc-ds">Format, validate &amp; minify JSON</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="password-gen.html" class="tc"><div class="tc-ic" style="background:rgba(34,197,94,.1);color:#16a34a">🔐</div><div class="tc-bd"><div class="tc-nm">Password Generator</div><div class="tc-ds">Secure random passwords</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="hash-generator.html" class="tc"><div class="tc-ic" style="background:rgba(34,197,94,.1);color:#16a34a;font-size:.9rem;font-weight:800">#</div><div class="tc-bd"><div class="tc-nm">Hash Generator</div><div class="tc-ds">MD5, SHA-1, SHA-256, SHA-512</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="base64.html" class="tc"><div class="tc-ic" style="background:rgba(34,197,94,.1);color:#16a34a;font-size:.75rem;font-weight:800">B64</div><div class="tc-bd"><div class="tc-nm">Base64 Encoder</div><div class="tc-ds">Encode or decode Base64 strings</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+      <a href="js-minifier.html" class="tc"><div class="tc-ic" style="background:rgba(34,197,94,.1);color:#16a34a">⚡</div><div class="tc-bd"><div class="tc-nm">JS Minifier</div><div class="tc-ds">Minify JavaScript for production</div></div><div class="tc-badge bf">Free</div><div class="tc-arr">→</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="sec alt">
+  <div class="cnt sec-ctr">
+    <div class="sec-lbl">Our Promise</div>
+    <div class="sec-ttl" style="font-size:clamp(1.3rem,3vw,1.8rem)">Why Choose iLoveConvert?</div>
+    <p class="sec-sub">Privacy, speed and simplicity — built in from day one, not added as an afterthought.</p>
+    <div class="why-grid">
+      <div class="wc" style="transition-delay:0s"><div class="wc-ic">⚡</div><div class="wc-t">Lightning Fast</div><p class="wc-d">Everything runs in your browser using modern Web APIs. No server roundtrip means instant results every time.</p></div>
+      <div class="wc" style="transition-delay:.1s"><div class="wc-ic">🔒</div><div class="wc-t">100% Private</div><p class="wc-d">Your files never leave your device. No server receives or stores your documents. Zero data collection, ever.</p></div>
+      <div class="wc" style="transition-delay:.2s"><div class="wc-ic">📱</div><div class="wc-t">Works Everywhere</div><p class="wc-d">Fully responsive and mobile-friendly. Works on any browser, phone, tablet or desktop — no app needed.</p></div>
+      <div class="wc" style="transition-delay:.3s"><div class="wc-ic">🆓</div><div class="wc-t">Free Forever</div><p class="wc-d">No hidden fees, no premium tiers, no limits. Every single tool is 100% free with no account required.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div style="padding:0 24px">
+  <div class="cta-bn">
+    <h2>Ready to Get Started?</h2>
+    <p>Try any of our 50+ free tools — no signup, no install, no waiting.</p>
+    <a href="pdf-editor.html" class="cta-btn">🚀 Open PDF Editor Free</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand"><div class="fbl">❤️ iLoveConvert</div><p>Free browser-based tools for PDF, image, video and developer tasks. Your files, your privacy, always.</p></div>
+    <div class="ft-col"><h4>PDF Tools</h4><a href="pdf-editor.html">PDF Editor</a><a href="merge-pdf.html">Merge PDF</a><a href="compress-pdf.html">Compress PDF</a><a href="split-pdf.html">Split PDF</a><a href="pdf-tools.html">All PDF Tools →</a></div>
+    <div class="ft-col"><h4>Image &amp; Video</h4><a href="image-compress.html">Compress Image</a><a href="image-resize.html">Resize Image</a><a href="image-convert.html">Convert Image</a><a href="video-to-mp3.html">Video to MP3</a><a href="image-tools.html">All Image Tools →</a></div>
+    <div class="ft-col"><h4>Company</h4><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a></div>
+  </div>
+  <div class="ft-btm">
+    <p>© 2025 iLoveConvert · All tools free, all files private · Made with ❤️</p>
+    <div class="ft-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+const TOOLS=[
+  {n:'PDF Editor',d:'Edit, annotate & sign PDFs',h:'pdf-editor.html',cat:'PDF',ic:'✏️',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'Merge PDF',d:'Combine multiple PDFs into one',h:'merge-pdf.html',cat:'PDF',ic:'📑',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'Compress PDF',d:'Reduce PDF file size',h:'compress-pdf.html',cat:'PDF',ic:'🗜',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'Split PDF',d:'Split PDF into separate files',h:'split-pdf.html',cat:'PDF',ic:'✂️',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'PDF to JPG',d:'Convert PDF pages to images',h:'pdf-to-jpg.html',cat:'PDF',ic:'🖼',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'JPG to PDF',d:'Convert images to PDF',h:'jpg-to-pdf.html',cat:'PDF',ic:'📄',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'Rotate PDF',d:'Rotate PDF pages',h:'rotate-pdf.html',cat:'PDF',ic:'🔄',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'Watermark PDF',d:'Add watermark to PDF',h:'watermark-pdf.html',cat:'PDF',ic:'💧',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'Protect PDF',d:'Password protect PDF',h:'protect-pdf.html',cat:'PDF',ic:'🔒',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'Unlock PDF',d:'Remove PDF password',h:'unlock-pdf.html',cat:'PDF',ic:'🔓',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'Delete PDF Pages',d:'Remove specific pages',h:'delete-pages-pdf.html',cat:'PDF',ic:'🗑',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'Organize PDF',d:'Drag & drop reorder pages',h:'organize-pdf.html',cat:'PDF',ic:'🔀',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'Crop PDF',d:'Remove PDF margins',h:'crop-pdf.html',cat:'PDF',ic:'✂️',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'Add Page Numbers',d:'Stamp page numbers on PDF',h:'number-pages-pdf.html',cat:'PDF',ic:'#️⃣',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'PDF to Text',d:'Extract text from PDF',h:'pdf-to-text.html',cat:'PDF',ic:'📝',bg:'rgba(229,62,62,.1)',c:'#e53e3e'},
+  {n:'Compress Image',d:'Reduce image file size',h:'image-compress.html',cat:'Image',ic:'🗜',bg:'rgba(14,165,233,.1)',c:'#0ea5e9'},
+  {n:'Resize Image',d:'Change image dimensions',h:'image-resize.html',cat:'Image',ic:'↔️',bg:'rgba(14,165,233,.1)',c:'#0ea5e9'},
+  {n:'Convert Image',d:'JPG PNG WebP converter',h:'image-convert.html',cat:'Image',ic:'🔄',bg:'rgba(14,165,233,.1)',c:'#0ea5e9'},
+  {n:'Crop Image',d:'Crop & trim images',h:'image-crop.html',cat:'Image',ic:'✂️',bg:'rgba(14,165,233,.1)',c:'#0ea5e9'},
+  {n:'Rotate Image',d:'Rotate & flip images',h:'image-rotate.html',cat:'Image',ic:'🔄',bg:'rgba(14,165,233,.1)',c:'#0ea5e9'},
+  {n:'Watermark Image',d:'Add watermark to images',h:'image-watermark.html',cat:'Image',ic:'💧',bg:'rgba(14,165,233,.1)',c:'#0ea5e9'},
+  {n:'Grayscale',d:'Convert to black & white',h:'grayscale.html',cat:'Image',ic:'⬛',bg:'rgba(14,165,233,.1)',c:'#0ea5e9'},
+  {n:'Remove EXIF',d:'Strip image metadata',h:'exif-remover.html',cat:'Image',ic:'🔍',bg:'rgba(14,165,233,.1)',c:'#0ea5e9'},
+  {n:'ICO Converter',d:'Create favicon .ico files',h:'ico-converter.html',cat:'Image',ic:'🎯',bg:'rgba(14,165,233,.1)',c:'#0ea5e9'},
+  {n:'Image to Base64',d:'Convert image to Base64 string',h:'image-to-base64.html',cat:'Image',ic:'🔢',bg:'rgba(14,165,233,.1)',c:'#0ea5e9'},
+  {n:'Color Picker',d:'Pick colors from any image',h:'color-picker.html',cat:'Image',ic:'🎨',bg:'rgba(14,165,233,.1)',c:'#0ea5e9'},
+  {n:'Video to MP3',d:'Extract audio from video',h:'video-to-mp3.html',cat:'Video',ic:'🎵',bg:'rgba(249,115,22,.1)',c:'#f97316'},
+  {n:'Video Screenshot',d:'Capture video frames',h:'video-screenshot.html',cat:'Video',ic:'📸',bg:'rgba(249,115,22,.1)',c:'#f97316'},
+  {n:'Video to GIF',d:'Create animated GIF',h:'video-gif.html',cat:'Video',ic:'🎞',bg:'rgba(249,115,22,.1)',c:'#f97316'},
+  {n:'QR Generator',d:'Create custom QR codes',h:'qr-generator.html',cat:'QR',ic:'📱',bg:'rgba(234,179,8,.1)',c:'#ca8a04'},
+  {n:'QR Scanner',d:'Scan QR with camera',h:'qr-scanner.html',cat:'QR',ic:'📷',bg:'rgba(234,179,8,.1)',c:'#ca8a04'},
+  {n:'WiFi QR Code',d:'Share WiFi via QR',h:'wifi-qr.html',cat:'QR',ic:'📶',bg:'rgba(234,179,8,.1)',c:'#ca8a04'},
+  {n:'vCard QR',d:'Contact card QR code',h:'vcard-qr.html',cat:'QR',ic:'👤',bg:'rgba(234,179,8,.1)',c:'#ca8a04'},
+  {n:'URL QR Code',d:'Generate URL QR codes',h:'url-qr.html',cat:'QR',ic:'🔗',bg:'rgba(234,179,8,.1)',c:'#ca8a04'},
+  {n:'Barcode Generator',d:'EAN UPC CODE128',h:'barcode-gen.html',cat:'QR',ic:'📊',bg:'rgba(234,179,8,.1)',c:'#ca8a04'},
+  {n:'JSON Formatter',d:'Format & validate JSON',h:'json-formatter.html',cat:'Dev',ic:'{}',bg:'rgba(34,197,94,.1)',c:'#16a34a'},
+  {n:'Password Generator',d:'Secure random passwords',h:'password-gen.html',cat:'Dev',ic:'🔐',bg:'rgba(34,197,94,.1)',c:'#16a34a'},
+  {n:'Hash Generator',d:'MD5 SHA-1 SHA-256',h:'hash-generator.html',cat:'Dev',ic:'#',bg:'rgba(34,197,94,.1)',c:'#16a34a'},
+  {n:'Base64 Encoder',d:'Encode or decode Base64',h:'base64.html',cat:'Dev',ic:'B64',bg:'rgba(34,197,94,.1)',c:'#16a34a'},
+  {n:'JS Minifier',d:'Minify JavaScript code',h:'js-minifier.html',cat:'Dev',ic:'⚡',bg:'rgba(34,197,94,.1)',c:'#16a34a'},
+  {n:'HTML Encoder',d:'Encode HTML entities',h:'html-encode.html',cat:'Dev',ic:'<>',bg:'rgba(34,197,94,.1)',c:'#16a34a'},
+];
+/* SEARCH */
+function renderDrop(q,drop){
+  if(!q||q.length<2){drop.classList.remove('open');return}
+  var res=TOOLS.filter(t=>t.n.toLowerCase().includes(q)||t.d.toLowerCase().includes(q)||t.cat.toLowerCase().includes(q));
+  if(!res.length){drop.innerHTML='<div class="sd-empty">No tools found for "'+q+'"</div>';drop.classList.add('open');return}
+  drop.innerHTML=res.slice(0,8).map(t=>'<a href="'+t.h+'" class="sd-item"><span class="sd-ic" style="background:'+t.bg+';color:'+t.c+'">'+t.ic+'</span><span><div class="sd-name">'+t.n+'</div><div class="sd-cat">'+t.cat+'</div></span></a>').join('');
+  drop.classList.add('open');
+}
+function setup(inId,dropId){
+  var i=document.getElementById(inId),d=document.getElementById(dropId);if(!i||!d)return;
+  i.addEventListener('input',function(){renderDrop(this.value.toLowerCase().trim(),d)});
+  i.addEventListener('keydown',function(e){if(e.key==='Escape')d.classList.remove('open')});
+  document.addEventListener('click',function(e){if(!i.contains(e.target)&&!d.contains(e.target))d.classList.remove('open')});
+}
+setup('heroIn','heroDrop');setup('navIn','navDrop');
+function goSec(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+/* THEME */
+function getTheme(){return localStorage.getItem('ilc_theme')||'light'}
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('mainThemeBtn').textContent=t==='dark'?'☀️':'🌙';
+  localStorage.setItem('ilc_theme',t);
+}
+function toggleTheme(){applyTheme(getTheme()==='dark'?'light':'dark');}
+function enableDark(){localStorage.setItem('ilc_theme_asked','1');applyTheme('dark');document.getElementById('themeModal').classList.add('hidden');}
+function stayLight(){localStorage.setItem('ilc_theme_asked','1');applyTheme('light');document.getElementById('themeModal').classList.add('hidden');}
+(function(){
+  applyTheme(getTheme());
+  if(!localStorage.getItem('ilc_theme_asked')&&!localStorage.getItem('ilc_theme')){
+    setTimeout(function(){document.getElementById('themeModal').classList.remove('hidden');},1800);
+  }
+})();
+/* MOBILE NAV */
+var _mob=false;
+function toggleMob(){
+  _mob=!_mob;var nav=document.getElementById('mobDrawer'),btn=document.getElementById('mainHamBtn');
+  if(_mob){nav.classList.add('open');btn.setAttribute('aria-expanded','true');var s=btn.querySelectorAll('span');s[0].style.transform='rotate(45deg) translate(5px,5px)';s[1].style.opacity='0';s[2].style.transform='rotate(-45deg) translate(5px,-5px)';}
+  else{closeMob();}
+}
+function closeMob(){_mob=false;var nav=document.getElementById('mobDrawer'),btn=document.getElementById('mainHamBtn');nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.querySelectorAll('span').forEach(function(s){s.style.transform='';s.style.opacity='';});}
+document.addEventListener('click',function(e){if(_mob&&!e.target.closest('#mobDrawer')&&!e.target.closest('#mainHamBtn'))closeMob();});
+/* SCROLL ANIMATIONS */
+var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.how-step,.wc').forEach(function(el){io.observe(el);});
+/* NAV SCROLL SHADOW */
+window.addEventListener('scroll',function(){document.getElementById('mainNav').style.boxShadow=window.scrollY>8?'0 2px 20px rgba(0,0,0,.1)':'';},{passive:true});
+</script>
+</body>
+</html>

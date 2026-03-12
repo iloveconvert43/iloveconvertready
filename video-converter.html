@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0"/>
+<title>Video Converter – Coming Soon | iLoveConvert</title>
+<meta name="description" content="Video Converter tool is coming soon to iLoveConvert. Currently 55% complete — launching in approximately 48 days."/>
+<meta name="robots" content="noindex,follow"/>
+<link rel="canonical" href="https://iloveconvert.app/video-converter.html"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23e53e3e'/><stop offset='100%25' stop-color='%237c3aed'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text y='.9em' font-size='66' x='17'>❤️</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script>(function(){var t=localStorage.getItem('ilc_theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+<style>
+:root{--bg:#050508;--bg2:#0a0a10;--bg3:#0f0f18;--border:rgba(255,255,255,.07);--bord2:rgba(255,255,255,.13);--text:#eeeef5;--text2:#8888a8;--text3:#444460;--acc:#f97316;--grad:linear-gradient(135deg,#f97316,#7c3aed);--fb:"Plus Jakarta Sans",system-ui,sans-serif;--fh:"Syne",system-ui,sans-serif}
+[data-theme="light"]{--bg:#f7f8fc;--bg2:#fff;--bg3:#f0f1f8;--border:#e4e5f0;--bord2:#c5c7de;--text:#12132a;--text2:#52546e;--text3:#9699b8}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;transition:background .3s,color .3s}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--fb);cursor:pointer;border:none;background:none}
+.nav{height:62px;background:rgba(5,5,8,.96);border-bottom:1px solid var(--border);padding:0 22px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;backdrop-filter:blur(20px)}
+[data-theme="light"] .nav{background:rgba(255,255,255,.97);border-bottom-color:#e4e5f0}
+.logo{display:flex;align-items:center;gap:8px;font-family:var(--fh);font-size:1.05rem;font-weight:800}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.logo-txt{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-sp{flex:1}
+.nav-theme{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.07);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.9rem;cursor:pointer}
+.nav-back{font-size:.79rem;font-weight:600;color:var(--text2);padding:6px 13px;border-radius:8px;border:1px solid var(--border);transition:.18s}
+.nav-back:hover{border-color:var(--bord2);color:var(--text)}
+/* HERO */
+.hero{padding:60px 22px 52px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:500px;border-radius:50%;background:radial-gradient(circle,#f9731618 0%,transparent 65%);pointer-events:none}
+.icon-ring{width:100px;height:100px;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,#f9731622,#f9731608);border:2px solid #f9731644;animation:ringPulse 2.8s ease-in-out infinite;position:relative}
+@keyframes ringPulse{0%,100%{box-shadow:0 0 0 0 #f9731622,0 0 0 0 #f973160d}50%{box-shadow:0 0 0 14px #f973160a,0 0 0 28px #f9731600}}
+.tool-icon{font-size:3.2rem}
+.live-badge{display:inline-flex;align-items:center;gap:6px;background:#f9731618;border:1px solid #f9731638;color:#f97316;font-size:.68rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px;border-radius:20px;margin:16px 0 14px}
+.dot{width:6px;height:6px;border-radius:50%;background:#f97316;animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.2;transform:scale(.6)}}
+h1{font-family:var(--fh);font-size:clamp(1.7rem,5vw,2.5rem);font-weight:800;color:var(--text);margin-bottom:10px;letter-spacing:-.03em}
+.subtitle{font-size:.92rem;color:var(--text2);line-height:1.75;max-width:440px;margin:0 auto 28px}
+/* STAGE TRACKER */
+.stage-track{display:flex;align-items:center;justify-content:center;margin:0 auto 28px;max-width:460px;gap:0}
+.cs-stage-item{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;flex:1}
+.cs-stage-line{flex:.8;height:2px;background:var(--border);margin-bottom:18px;align-self:flex-start;margin-top:11px}
+.cs-stage-done .cs-stage-line{background:#f9731655}
+.cs-stage-dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--border);background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:800;z-index:1;transition:.3s;color:var(--text3)}
+.cs-stage-done .cs-stage-dot{background:#f97316;border-color:#f97316;color:#fff}
+.cs-stage-active .cs-stage-dot{background:#f9731622;border-color:#f97316;color:#f97316;box-shadow:0 0 0 4px #f9731618;animation:stagePulse 2s ease-in-out infinite}
+@keyframes stagePulse{0%,100%{box-shadow:0 0 0 4px #f9731618}50%{box-shadow:0 0 0 8px #f9731608}}
+.cs-stage-lbl{font-size:.6rem;font-weight:600;color:var(--text3);text-align:center;white-space:nowrap}
+.cs-stage-done .cs-stage-lbl{color:var(--text2)}
+.cs-stage-active .cs-stage-lbl{color:#f97316;font-weight:800}
+/* PROGRESS CARD */
+.cs-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px;max-width:480px;margin:0 auto 22px;text-align:left}
+.cs-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.cs-card-label{font-size:.75rem;font-weight:700;color:var(--text2)}
+.cs-prog-pct{font-size:1.6rem;font-weight:800;color:var(--text);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.cs-prog-pct span{font-size:.9rem;color:var(--acc)}
+.cs-stage-badge{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#a855f7;background:#a855f718;border-radius:20px;padding:3px 9px;margin-bottom:12px;display:inline-block}
+.cs-bar-bg{height:8px;background:var(--bg3);border-radius:4px;overflow:hidden;margin-bottom:14px}
+.cs-bar-fg{height:100%;border-radius:4px;background:var(--grad);width:0%;transition:width 1.6s cubic-bezier(.22,1,.36,1)}
+.cs-meta{display:flex;justify-content:space-between;align-items:center;font-size:.73rem;color:var(--text2)}
+.cs-eta strong{color:var(--text)}
+/* FEATURES */
+.cs-feats{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:480px;margin:0 auto 22px}
+.cs-feat{background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:10px 13px;font-size:.78rem;color:var(--text2);transition:.18s;display:flex;align-items:center;gap:7px}
+.cs-feat:hover{border-color:var(--bord2);color:var(--text)}
+/* NOTIFY */
+.notify-box{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px 22px;max-width:480px;margin:0 auto 22px}
+.notify-box h4{font-size:.83rem;font-weight:800;color:var(--text);margin-bottom:4px}
+.notify-box p{font-size:.77rem;color:var(--text2);margin-bottom:12px}
+.notify-row{display:flex;gap:8px}
+.notify-row input{flex:1;padding:9px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;font-size:.83rem;color:var(--text);font-family:var(--fb);outline:none;transition:.18s}
+.notify-row input:focus{border-color:#f97316}
+.notify-row button{padding:9px 16px;border-radius:8px;background:var(--grad);color:#fff;font-size:.82rem;font-weight:700;font-family:var(--fb);transition:.18s;flex-shrink:0}
+.notify-row button:hover{filter:brightness(1.08)}
+.back-btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:10px;background:var(--grad);color:#fff;font-size:.87rem;font-weight:700;transition:.18s;margin:0 auto;display:block;max-width:200px;text-align:center}
+.back-btn:hover{filter:brightness(1.08);transform:translateY(-2px)}
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px;text-align:center;font-size:.72rem;color:var(--text3);margin-top:40px}
+@media(max-width:520px){.cs-feats{grid-template-columns:1fr}.stage-track{max-width:320px}}
+
+/* ══ iOS INPUT ZOOM FIX ══ */
+@media(max-width:640px){
+  input,select,textarea{font-size:16px!important}
+  input[type=number]{font-size:16px!important}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="logo"><div class="logo-mark">❤️</div><span class="logo-txt">iLoveConvert</span></a>
+  <div class="nav-sp"></div>
+  <button class="nav-theme" id="navThemeBtn" onclick="(function(){var t=localStorage.getItem('ilc_theme')||'dark';t=t==='dark'?'light':'dark';localStorage.setItem('ilc_theme',t);document.documentElement.setAttribute('data-theme',t);document.getElementById('navThemeBtn').textContent=t==='dark'?'☀️':'🌙';})()">☀️</button>
+  <a href="index.html" class="nav-back">← All Tools</a>
+</nav>
+
+<section class="hero">
+  <div class="icon-ring"><span class="tool-icon">🔄</span></div>
+  <div class="live-badge"><span class="dot"></span>In Development</div>
+  <h1>Video Converter</h1>
+  <p class="subtitle">This tool is currently being built and will be available soon. Here is where we are in the process:</p>
+
+  <!-- STAGE TRACKER -->
+  <div class="stage-track"><div class="cs-stage-item cs-stage-done"><div class="cs-stage-dot">✓</div><div class="cs-stage-lbl">Planning</div></div><div class="cs-stage-line"></div><div class="cs-stage-item cs-stage-active"><div class="cs-stage-dot">⚡</div><div class="cs-stage-lbl">Design</div></div><div class="cs-stage-line"></div><div class="cs-stage-item cs-stage-todo"><div class="cs-stage-dot">3</div><div class="cs-stage-lbl">Development</div></div><div class="cs-stage-line"></div><div class="cs-stage-item cs-stage-todo"><div class="cs-stage-dot">4</div><div class="cs-stage-lbl">Testing</div></div></div>
+
+  <!-- PROGRESS CARD -->
+  <div class="cs-card">
+    <div class="cs-card-top">
+      <span class="cs-card-label">Overall Progress</span>
+      <span class="cs-prog-pct" id="cs-pct-num">0<span>%</span></span>
+    </div>
+    <div class="cs-stage-badge" id="cs-stage-badge">Design</div>
+    <div class="cs-bar-bg"><div class="cs-bar-fg" id="cs-bar"></div></div>
+    <div class="cs-meta">
+      <span class="cs-eta">Est. launch: <strong>~48 days</strong></span>
+      <span style="font-size:.68rem;color:var(--text3)">Updated automatically</span>
+    </div>
+  </div>
+
+  <!-- PLANNED FEATURES -->
+  <div class="cs-feats"><div class="cs-feat">✓ MP4, WebM, MOV, AVI</div><div class="cs-feat">✓ Resolution selection</div><div class="cs-feat">✓ Frame rate control</div><div class="cs-feat">✓ Audio track options</div></div>
+
+  <!-- NOTIFY -->
+  <div class="notify-box">
+    <h4>🔔 Get Notified When It Launches</h4>
+    <p>Drop your email and we will notify you the moment this tool goes live.</p>
+    <div class="notify-row">
+      <input type="email" placeholder="your@email.com" id="notifyEmail"/>
+      <button onclick="notifyMe()">Notify Me</button>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-btn">← Explore 50+ Live Tools</a>
+</section>
+
+<footer>
+  <p>© 2025 iLoveConvert · <a href="index.html" style="color:inherit">Back to all tools</a> · <a href="privacy.html" style="color:inherit">Privacy</a></p>
+</footer>
+
+<script>
+(function(){
+  var t=localStorage.getItem('ilc_theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('navThemeBtn');
+  if(btn)btn.textContent=t==='dark'?'☀️':'🌙';
+})();
+
+/* Animate progress bar */
+var TARGET=55;
+var el=document.getElementById('cs-bar'),numEl=document.getElementById('cs-pct-num');
+var cur=0;
+setTimeout(function(){
+  var iv=setInterval(function(){
+    cur=Math.min(cur+1,TARGET);
+    if(el)el.style.width=cur+'%';
+    if(numEl)numEl.innerHTML=cur+'<span>%</span>';
+    if(cur>=TARGET)clearInterval(iv);
+  },20);
+},400);
+
+/* Subtle fluctuation after load */
+setTimeout(function(){
+  setInterval(function(){
+    var v=TARGET+Math.floor(Math.random()*3-1);
+    v=Math.max(Math.min(v,99),TARGET-1);
+    if(el)el.style.width=v+'%';
+  },8000);
+},4000);
+
+function notifyMe(){
+  var em=document.getElementById('notifyEmail');
+  if(!em||!em.value.includes('@')){alert('Please enter a valid email address.');return;}
+  em.value='';
+  alert('✅ Thanks! We will notify you at that email when Video Converter launches.');
+}
+</script>
+</body>
+</html>

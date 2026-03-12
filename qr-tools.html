@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0"/>
+<title>Free Online QR Code & Barcode Generator – WiFi, vCard, URL QR | iLoveConvert</title>
+<meta name="description" content="Free QR code and barcode generator. Create URL, WiFi, vCard, and custom QR codes. Generate EAN-13, UPC, Code128 barcodes. Scan QR codes from image or camera."/>
+<link rel="canonical" href="https://iloveconvert.vercel.app/qr-tools.html"/>
+<meta property="og:title" content="Free Online QR Code & Barcode Generator – WiFi, vCard, URL QR | iLoveConvert"/>
+<meta property="og:description" content="Free QR code and barcode generator. Create URL, WiFi, vCard, and custom QR codes. Generate EAN-13, UPC, Code128 barcodes. Scan QR codes from image or camera."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://iloveconvert.vercel.app/qr-tools.html"/>
+<meta property="og:image" content="https://iloveconvert.vercel.app/og-image.png"/>
+<meta property="og:site_name" content="iLoveConvert"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Free Online QR Code & Barcode Generator – WiFi, vCard, URL QR | iLoveConvert"/>
+<meta name="twitter:description" content="Free QR code and barcode generator. Create URL, WiFi, vCard, and custom QR codes. Generate EAN-13, UPC, Code128 barcodes. Scan QR codes from image or camera."/>
+<meta name="twitter:image" content="https://iloveconvert.vercel.app/og-image.png"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://iloveconvert.vercel.app/index.html"}, {"@type": "ListItem", "position": 2, "name": "QR Tools", "item": "https://iloveconvert.vercel.app/qr-tools.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Free QR Code & Barcode Tools", "description": "Free QR code and barcode generator. Create URL, WiFi, vCard, and custom QR codes. Generate EAN-13, UPC, Code128 barcodes. Scan QR codes from image or camera.", "url": "https://iloveconvert.vercel.app/qr-tools.html", "provider": {"@type": "Organization", "name": "iLoveConvert", "url": "https://iloveconvert.vercel.app"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the best QR code for a website?", "acceptedAnswer": {"@type": "Answer", "text": "Use URL QR Code — it's optimized for URL encoding and creates the most scannable QR for links."}}, {"@type": "Question", "name": "How do I create a WiFi QR code for my restaurant?", "acceptedAnswer": {"@type": "Answer", "text": "Use WiFi QR Code — enter SSID and password, download the PNG, and print it for your tables. Customers scan to connect instantly."}}, {"@type": "Question", "name": "Can I scan a QR code from a screenshot?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — use QR Scanner, select \"Upload Image\", and upload any screenshot or image containing a QR code."}}, {"@type": "Question", "name": "What barcode type should I use for retail products?", "acceptedAnswer": {"@type": "Answer", "text": "Use EAN-13 for most products (13-digit, international standard). UPC-A for US/Canada retail (12-digit)."}}, {"@type": "Question", "name": "Do my URLs or WiFi passwords get stored anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No — QR generation is fully local. Your data is encoded into the QR image without being sent to any server."}}]}</script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23e53e3e'/><stop offset='100%25' stop-color='%237c3aed'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text y='.9em' font-size='66' x='17'>❤</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script id="ilc-t">(function(){var t=localStorage.getItem('ilc_theme')||'dark';document.documentElement.setAttribute('data-theme',t);})()</script>
+<style>
+
+:root{--bg:#050508;--bg2:#0a0a14;--bg3:#0f0f1c;--white:#eeeef5;--text2:#8888a8;--text3:#444460;--border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);--accent:#e53e3e;--accent-glow:rgba(229,62,62,.15);--font:'Plus Jakarta Sans','Outfit',system-ui,sans-serif;--font-head:'Syne',system-ui,sans-serif}
+[data-theme="light"]{--bg:#f7f8fc;--bg2:#fff;--bg3:#f0f1f8;--white:#12132a;--text2:#52546e;--text3:#9699b8;--border:rgba(18,19,42,.06);--border2:rgba(18,19,42,.12);--accent:#e53e3e;--accent-glow:rgba(229,62,62,.08)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--font);background:var(--bg);color:var(--white);-webkit-font-smoothing:antialiased;min-height:100vh}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--font);cursor:pointer;border:none;background:none}
+img{max-width:100%}
+
+/* ── CATEGORY NAV ── */
+.cat-nav{position:sticky;top:0;z-index:999;height:62px;background:rgba(5,5,8,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(20px);display:flex;align-items:center;padding:0 24px;gap:12px;transition:.3s}
+[data-theme="light"] .cat-nav{background:rgba(255,255,255,.97);border-bottom-color:var(--border)}
+.cat-logo{display:flex;align-items:center;gap:8px;font-family:var(--font-head);font-size:1.05rem;font-weight:800;flex-shrink:0;text-decoration:none}
+.cat-logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#e53e3e,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.cat-logo span{background:linear-gradient(90deg,#e53e3e,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cat-nav-links{display:flex;align-items:center;gap:2px;margin-left:10px}
+.cat-nav-links a{padding:6px 11px;border-radius:7px;font-size:.8rem;font-weight:600;color:var(--text2);transition:.2s}
+.cat-nav-links a:hover,.cat-nav-links a.cur{color:var(--white);background:rgba(255,255,255,.07)}
+[data-theme="light"] .cat-nav-links a:hover,[data-theme="light"] .cat-nav-links a.cur{background:var(--bg3)}
+.cat-theme{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;transition:.2s}
+.cat-theme:hover{border-color:var(--border2)}
+.cat-all-btn{padding:7px 14px;border-radius:8px;font-size:.79rem;font-weight:700;border:1px solid var(--border);color:var(--text2);transition:.2s;white-space:nowrap;flex-shrink:0}
+.cat-all-btn:hover{color:var(--white);border-color:var(--border2)}
+.cat-ham{display:none;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid var(--border);flex-direction:column;align-items:center;justify-content:center;gap:5px;flex-shrink:0}
+.cat-ham span{display:block;width:16px;height:2px;border-radius:1px;background:var(--text2);transition:.2s}
+.cat-mob-menu{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;z-index:998;background:var(--bg2);border-top:1px solid var(--border);padding:14px;flex-direction:column;gap:3px;overflow-y:auto}
+.cat-mob-menu.open{display:flex;animation:cmIn .22s ease}
+@keyframes cmIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.cat-mob-menu a{padding:12px 14px;border-radius:10px;font-size:.9rem;font-weight:600;color:var(--text2);display:block;transition:.2s}
+.cat-mob-menu a:hover{background:rgba(255,255,255,.05);color:var(--white)}
+[data-theme="light"] .cat-mob-menu a:hover{background:var(--bg3)}
+.cat-mob-div{height:1px;background:var(--border);margin:6px 0}
+
+/* ── HERO ── */
+.cat-hero{padding:60px 24px 50px;text-align:center;position:relative;overflow:hidden}
+.cat-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% -10%,var(--color-glow,rgba(229,62,62,.12)),transparent);pointer-events:none}
+.cat-bc{display:flex;justify-content:center;align-items:center;gap:6px;font-size:.73rem;color:var(--text3);margin-bottom:14px}
+.cat-bc a{color:var(--text3);transition:.15s}.cat-bc a:hover{color:var(--accent)}
+.cat-hero-icon{font-size:3rem;margin-bottom:14px;display:block;filter:drop-shadow(0 0 20px var(--color-glow,rgba(229,62,62,.3)))}
+.cat-hero h1{font-family:var(--font-head);font-size:2.2rem;font-weight:900;letter-spacing:-0.04em;margin-bottom:12px;line-height:1.1}
+.cat-hero p{color:var(--text2);max-width:540px;margin:0 auto;font-size:.92rem;line-height:1.7}
+
+/* ── TOOL GRID ── */
+.cat-section{max-width:1100px;margin:0 auto;padding:0 24px 48px}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:24px}
+.cat-card{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;transition:.22s;cursor:pointer;text-decoration:none;color:inherit;position:relative}
+.cat-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+[data-theme="light"] .cat-card:hover{box-shadow:0 4px 16px rgba(18,19,42,.1)}
+.cat-card-ic{width:44px;height:44px;border-radius:11px;background:var(--tool-bg,rgba(229,62,62,.1));color:var(--tool-color,#e53e3e);display:flex;align-items:center;justify-content:center;font-size:1.35rem;flex-shrink:0}
+.cat-card-bd{flex:1;min-width:0}
+.cat-card-nm{font-size:.88rem;font-weight:700;color:var(--white);margin-bottom:3px}
+.cat-card-ds{font-size:.76rem;color:var(--text2);line-height:1.4}
+.cat-card-arr{font-size:.9rem;color:var(--text3);flex-shrink:0;transition:.2s}
+.cat-card:hover .cat-card-arr{color:var(--accent);transform:translateX(3px)}
+.cat-badge{position:absolute;top:10px;right:10px;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:2px 7px;border-radius:20px;background:linear-gradient(135deg,#e53e3e,#7c3aed);color:#fff}
+
+/* ── ABOUT SECTION ── */
+.cat-about{max-width:900px;margin:0 auto;padding:0 24px 48px}
+.cat-about-box{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:32px}
+.cat-about-box h2{font-family:var(--font-head);font-size:1.2rem;font-weight:800;margin-bottom:12px;color:var(--white)}
+.cat-about-box p{color:var(--text2);font-size:.88rem;line-height:1.8}
+
+/* ── STATS BAR ── */
+.cat-stats{max-width:900px;margin:0 auto 32px;padding:0 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cat-stat{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:18px 20px;text-align:center}
+.cat-stat-num{font-family:var(--font-head);font-size:1.6rem;font-weight:900;background:linear-gradient(90deg,#e53e3e,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:4px}
+.cat-stat-lbl{font-size:.73rem;color:var(--text2);font-weight:600}
+
+/* ── FAQ ── */
+.cat-faq{max-width:900px;margin:0 auto;padding:0 24px 56px}
+.cat-faq h2{font-family:var(--font-head);font-size:1.3rem;font-weight:800;margin-bottom:18px;color:var(--white)}
+.cat-faq details{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:8px;transition:.2s;cursor:pointer}
+.cat-faq details:hover{border-color:var(--border2)}
+.cat-faq details[open]{border-color:var(--accent)}
+.cat-faq summary{font-weight:700;font-size:.87rem;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.cat-faq summary::-webkit-details-marker{display:none}
+.cat-faq summary::after{content:"＋";color:var(--text3);font-size:1rem;flex-shrink:0}
+.cat-faq details[open] summary::after{content:"－";color:var(--accent)}
+.cat-faq details p{margin-top:10px;font-size:.83rem;color:var(--text2);line-height:1.75}
+
+/* ── FOOTER ── */
+.cat-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24px 24px;margin-top:64px}
+.cat-ft-in{max-width:1100px;margin:0 auto}
+.cat-ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+.cat-ft-brand p{font-size:.79rem;color:var(--text2);line-height:1.7;margin-top:10px;max-width:220px}
+.cat-ft-logo{font-family:var(--font-head);font-size:1rem;font-weight:800;display:block;margin-bottom:8px;background:linear-gradient(90deg,#e53e3e,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cat-ft-col h4{font-size:.67rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:12px}
+.cat-ft-col a{display:block;font-size:.79rem;color:var(--text2);margin-bottom:8px;transition:.15s}
+.cat-ft-col a:hover{color:var(--accent)}
+.cat-ft-btm{border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.cat-ft-btm p{font-size:.72rem;color:var(--text3)}
+.cat-ft-links{display:flex;gap:16px}
+.cat-ft-links a{font-size:.72rem;color:var(--text3);transition:.15s}
+.cat-ft-links a:hover{color:var(--text2)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  .cat-nav-links,.cat-all-btn{display:none!important}
+  .cat-ham{display:flex!important}
+  .cat-hero h1{font-size:1.6rem}
+  .cat-grid{grid-template-columns:1fr}
+  .cat-stats{grid-template-columns:1fr 1fr}
+  .cat-ft-grid{grid-template-columns:1fr 1fr}
+  .cat-ft-brand{grid-column:1/-1}
+}
+@media(max-width:480px){
+  .cat-stats{grid-template-columns:1fr 1fr}
+  .cat-ft-grid{grid-template-columns:1fr}
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.cat-card{animation:fadeUp .4s ease both}
+
+.cat-hero{--color-glow:rgba(202,138,4,0.15)}
+</style>
+</head>
+<body>
+
+<nav class="cat-nav" id="i-site-nav">
+  <a href="index.html" class="cat-logo"><div class="cat-logo-mark">❤️</div><span>iLoveConvert</span></a>
+  <div class="cat-nav-links">
+    <a href="pdf-tools.html" >📄 PDF</a>
+    <a href="image-tools.html" >🖼 Image</a>
+    <a href="video-tools.html" >🎬 Video</a>
+    <a href="qr-tools.html" class="cur">📱 QR</a>
+    <a href="developer-tools.html" >⚙️ Dev</a>
+  </div>
+  <div style="flex:1"></div>
+  <button class="cat-theme" onclick="ilcToggleTheme()" title="Toggle theme">☀️</button>
+  <a href="index.html" class="cat-all-btn">← All Tools</a>
+  <button class="cat-ham" id="cat-ham" onclick="catToggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="cat-mob-menu" id="cat-mob-menu">
+  <a href="index.html" onclick="catToggleMob()">🏠 All Tools</a>
+  <a href="pdf-tools.html" onclick="catToggleMob()">📄 PDF Tools</a>
+  <a href="image-tools.html" onclick="catToggleMob()">🖼 Image Tools</a>
+  <a href="video-tools.html" onclick="catToggleMob()">🎬 Video Tools</a>
+  <a href="qr-tools.html" onclick="catToggleMob()">📱 QR & Barcode</a>
+  <a href="developer-tools.html" onclick="catToggleMob()">⚙️ Developer Tools</a>
+  <div class="cat-mob-div"></div>
+  <a href="about.html" onclick="catToggleMob()">About</a>
+  <a href="contact.html" onclick="catToggleMob()">Contact</a>
+  <a href="privacy.html" onclick="catToggleMob()">Privacy</a>
+</div>
+
+<!-- HERO -->
+<section class="cat-hero">
+  <nav class="cat-bc" aria-label="Breadcrumb">
+    <a href="index.html">🏠 Home</a><span>›</span><span>QR Tools</span>
+  </nav>
+  <span class="cat-hero-icon">📱</span>
+  <h1>Free QR Code & Barcode Tools</h1>
+  <p>6 free tools to create, customize, and scan QR codes & barcodes.</p>
+</section>
+
+<!-- STATS -->
+<div class="cat-stats">
+  <div class="cat-stat"><span class="cat-stat-num">6</span><span class="cat-stat-lbl">Tools</span></div>
+  <div class="cat-stat"><span class="cat-stat-num">Free</span><span class="cat-stat-lbl">Always</span></div>
+  <div class="cat-stat"><span class="cat-stat-num">0</span><span class="cat-stat-lbl">Servers</span></div>
+  <div class="cat-stat"><span class="cat-stat-num">0</span><span class="cat-stat-lbl">Sign-up Needed</span></div>
+</div>
+
+<!-- TOOL GRID -->
+<section class="cat-section">
+  <h2 style="font-family:var(--font-head);font-size:1.15rem;font-weight:800;color:var(--white);margin-bottom:4px">QR Tools</h2>
+  <p style="font-size:.82rem;color:var(--text2);margin-bottom:0">Click any tool to start — no sign-up needed</p>
+  <div class="cat-grid">
+<a href="qr-generator.html" class="cat-card" style="--tool-bg:rgba(202,138,4,0.12);--tool-color:#ca8a04" title="QR Generator – Custom QR codes for any data">
+  <div class="cat-card-ic">📱</div>
+  <div class="cat-card-bd"><div class="cat-card-nm">QR Generator</div><div class="cat-card-ds">Custom QR codes for any data</div></div>
+  <span class="cat-card-arr">→</span>
+  <div class="cat-badge">Popular</div>
+</a>
+<a href="wifi-qr.html" class="cat-card" style="--tool-bg:rgba(202,138,4,0.12);--tool-color:#ca8a04" title="WiFi QR Code – Let guests connect without typing passwords">
+  <div class="cat-card-ic">📶</div>
+  <div class="cat-card-bd"><div class="cat-card-nm">WiFi QR Code</div><div class="cat-card-ds">Let guests connect without typing passwords</div></div>
+  <span class="cat-card-arr">→</span>
+  
+</a>
+<a href="vcard-qr.html" class="cat-card" style="--tool-bg:rgba(202,138,4,0.12);--tool-color:#ca8a04" title="vCard QR Code – Business card QR for contact sharing">
+  <div class="cat-card-ic">👤</div>
+  <div class="cat-card-bd"><div class="cat-card-nm">vCard QR Code</div><div class="cat-card-ds">Business card QR for contact sharing</div></div>
+  <span class="cat-card-arr">→</span>
+  
+</a>
+<a href="url-qr.html" class="cat-card" style="--tool-bg:rgba(202,138,4,0.12);--tool-color:#ca8a04" title="URL QR Code – QR code for any website link">
+  <div class="cat-card-ic">🔗</div>
+  <div class="cat-card-bd"><div class="cat-card-nm">URL QR Code</div><div class="cat-card-ds">QR code for any website link</div></div>
+  <span class="cat-card-arr">→</span>
+  
+</a>
+<a href="qr-scanner.html" class="cat-card" style="--tool-bg:rgba(202,138,4,0.12);--tool-color:#ca8a04" title="QR Scanner – Scan QR codes from image or camera">
+  <div class="cat-card-ic">🔍</div>
+  <div class="cat-card-bd"><div class="cat-card-nm">QR Scanner</div><div class="cat-card-ds">Scan QR codes from image or camera</div></div>
+  <span class="cat-card-arr">→</span>
+  
+</a>
+<a href="barcode-gen.html" class="cat-card" style="--tool-bg:rgba(202,138,4,0.12);--tool-color:#ca8a04" title="Barcode Generator – EAN-13, UPC, Code128, Code39">
+  <div class="cat-card-ic">📊</div>
+  <div class="cat-card-bd"><div class="cat-card-nm">Barcode Generator</div><div class="cat-card-ds">EAN-13, UPC, Code128, Code39</div></div>
+  <span class="cat-card-arr">→</span>
+  
+</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="cat-about">
+  <div class="cat-about-box">
+    <h2>Why Use iLoveConvert QR Tools?</h2>
+    <p>Generate QR codes for websites, WiFi networks, business contacts, and more — then download as PNG or SVG for print and digital use. Scan QR codes from images or your camera without installing any app. Also includes a professional barcode generator for retail and logistics.</p>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="cat-faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>What is the best QR code for a website?</summary><p>Use URL QR Code — it's optimized for URL encoding and creates the most scannable QR for links.</p></details>
+<details><summary>How do I create a WiFi QR code for my restaurant?</summary><p>Use WiFi QR Code — enter SSID and password, download the PNG, and print it for your tables. Customers scan to connect instantly.</p></details>
+<details><summary>Can I scan a QR code from a screenshot?</summary><p>Yes — use QR Scanner, select "Upload Image", and upload any screenshot or image containing a QR code.</p></details>
+<details><summary>What barcode type should I use for retail products?</summary><p>Use EAN-13 for most products (13-digit, international standard). UPC-A for US/Canada retail (12-digit).</p></details>
+<details><summary>Do my URLs or WiFi passwords get stored anywhere?</summary><p>No — QR generation is fully local. Your data is encoded into the QR image without being sent to any server.</p></details>
+
+</section>
+
+<footer class="cat-footer">
+  <div class="cat-ft-in">
+    <div class="cat-ft-grid">
+      <div class="cat-ft-brand">
+        <a href="index.html" class="cat-ft-logo">❤️ iLoveConvert</a>
+        <p>60+ free browser-based tools for PDF, images, video, QR codes, and developers. No upload. No sign-up. Always free.</p>
+      </div>
+      <div class="cat-ft-col">
+        <h4>PDF Tools</h4>
+        <a href="merge-pdf.html">Merge PDF</a>
+        <a href="compress-pdf.html">Compress PDF</a>
+        <a href="split-pdf.html">Split PDF</a>
+        <a href="pdf-editor.html">PDF Editor</a>
+        <a href="jpg-to-pdf.html">JPG to PDF</a>
+        <a href="pdf-tools.html">All PDF Tools →</a>
+      </div>
+      <div class="cat-ft-col">
+        <h4>Image Tools</h4>
+        <a href="image-compress.html">Compress Image</a>
+        <a href="image-resize.html">Resize Image</a>
+        <a href="image-convert.html">Convert Image</a>
+        <a href="image-crop.html">Crop Image</a>
+        <a href="exif-remover.html">Remove EXIF</a>
+        <a href="image-tools.html">All Image Tools →</a>
+      </div>
+      <div class="cat-ft-col">
+        <h4>More Tools</h4>
+        <a href="video-to-mp3.html">Video to MP3</a>
+        <a href="qr-generator.html">QR Generator</a>
+        <a href="wifi-qr.html">WiFi QR Code</a>
+        <a href="json-formatter.html">JSON Formatter</a>
+        <a href="password-gen.html">Password Generator</a>
+        <a href="developer-tools.html">Dev Tools →</a>
+      </div>
+      <div class="cat-ft-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="cat-ft-btm">
+      <p>© 2025 iLoveConvert. Free online tools — 100% browser-based. No data uploaded.</p>
+      <div class="cat-ft-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+// Theme
+(function(){var t=localStorage.getItem('ilc_theme')||'dark';document.documentElement.setAttribute('data-theme',t);}());
+function ilcToggleTheme(){var h=document.documentElement,t=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',t);localStorage.setItem('ilc_theme',t);}
+
+// Mobile menu
+function catToggleMob(){
+  var m=document.getElementById('cat-mob-menu');
+  var b=document.getElementById('cat-ham');
+  var open=m.classList.toggle('open');
+  document.body.style.overflow=open?'hidden':'';
+  if(b){var s=b.querySelectorAll('span');
+    if(open){s[0].style.transform='rotate(45deg) translate(5px,5px)';s[1].style.opacity='0';s[2].style.transform='rotate(-45deg) translate(5px,-5px)';}
+    else{s.forEach(function(el){el.style.transform='';el.style.opacity='';});}
+  }
+}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('cat-mob-menu');
+  if(m&&m.classList.contains('open')&&!e.target.closest('#cat-mob-menu')&&!e.target.closest('#cat-ham'))catToggleMob();
+});
+
+// Nav shadow on scroll
+window.addEventListener('scroll',function(){
+  var n=document.getElementById('i-site-nav');
+  if(n)n.style.boxShadow=window.scrollY>8?'0 2px 24px rgba(0,0,0,.4)':'';
+},{passive:true});
+
+// Animate cards on scroll
+if(typeof IntersectionObserver!=='undefined'){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.style.animationDelay=e.target.dataset.delay||'0ms';e.target.classList.add('vis');io.unobserve(e.target);}});
+  },{threshold:.05});
+  document.querySelectorAll('.cat-card').forEach(function(el,i){el.dataset.delay=(i*40)+'ms';io.observe(el);});
+}
+
+</script>
+</body>
+</html>
