@@ -146,6 +146,26 @@ img{max-width:100%}
 
 .cat-hero{--color-glow:rgba(202,138,4,0.15)}
 </style>
+<!-- ═══ GOOGLE ADSENSE ═══════════════════════════════════════
+  ACTIVATE: Replace ca-pub-XXXXXXXXXXXXXXXXXXXX with your Publisher ID
+  Replace XXXXXXXXXX with your Ad Slot IDs from AdSense dashboard
+  Then remove the <!-- --> comment wrappers around each <ins> block
+  ═══════════════════════════════════════════════════════════ -->
+<!--ADSENSE_ACTIVE-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<!--/ADSENSE_ACTIVE-->
+<meta name="robots" content="index, follow"/>
+<script type="application/ld+json">{
+  "@context":"https://schema.org","@type":"HowTo",
+  "name":"How to Create and Scan QR Codes Online Free",
+  "description":"Generate QR codes for URLs, WiFi, vCards and scan QR codes with your camera",
+  "step":[
+    {"@type":"HowToStep","name":"Pick a QR Tool","text":"Choose from URL QR, WiFi QR, vCard QR, Barcode Generator or QR Scanner."},
+    {"@type":"HowToStep","name":"Enter Your Data","text":"Type or paste the URL, text, WiFi credentials or contact information."},
+    {"@type":"HowToStep","name":"Generate QR Code","text":"Your QR code is generated instantly in the browser with a live preview."},
+    {"@type":"HowToStep","name":"Download or Scan","text":"Download your QR code as PNG or scan it directly from the screen."}
+  ]
+}</script>
 </head>
 <body>
 
@@ -353,7 +373,7 @@ if(typeof IntersectionObserver!=='undefined'){
 
 </script>
 
-<script src="supabase.js"></script>
+<script src="particles.js" defer></script><script src="supabase.js"></script>
 <script src="auth.js"></script>
 <script>if("serviceWorker"in navigator)navigator.serviceWorker.register("service-worker.js").catch(function(){});</script>
 </body>

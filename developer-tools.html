@@ -146,6 +146,26 @@ img{max-width:100%}
 
 .cat-hero{--color-glow:rgba(22,163,74,0.15)}
 </style>
+<!-- ═══ GOOGLE ADSENSE ═══════════════════════════════════════
+  ACTIVATE: Replace ca-pub-XXXXXXXXXXXXXXXXXXXX with your Publisher ID
+  Replace XXXXXXXXXX with your Ad Slot IDs from AdSense dashboard
+  Then remove the <!-- --> comment wrappers around each <ins> block
+  ═══════════════════════════════════════════════════════════ -->
+<!--ADSENSE_ACTIVE-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<!--/ADSENSE_ACTIVE-->
+<meta name="robots" content="index, follow"/>
+<script type="application/ld+json">{
+  "@context":"https://schema.org","@type":"HowTo",
+  "name":"How to Use Free Developer Tools Online",
+  "description":"Format JSON, minify JS, encode Base64, generate passwords and hashes in your browser",
+  "step":[
+    {"@type":"HowToStep","name":"Select a Developer Tool","text":"Choose from JSON formatter, JS minifier, Base64 encoder, hash generator and more."},
+    {"@type":"HowToStep","name":"Paste Your Code or Data","text":"Paste your JSON, JavaScript, text or other input into the editor."},
+    {"@type":"HowToStep","name":"Process Instantly","text":"Results are generated in real time, entirely in your browser."},
+    {"@type":"HowToStep","name":"Copy or Download","text":"Copy the output to clipboard or download as a file."}
+  ]
+}</script>
 </head>
 <body>
 
@@ -353,7 +373,7 @@ if(typeof IntersectionObserver!=='undefined'){
 
 </script>
 
-<script src="supabase.js"></script>
+<script src="particles.js" defer></script><script src="supabase.js"></script>
 <script src="auth.js"></script>
 <script>if("serviceWorker"in navigator)navigator.serviceWorker.register("service-worker.js").catch(function(){});</script>
 </body>

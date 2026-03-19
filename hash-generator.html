@@ -33,7 +33,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#050508;--bg2:#0a0a10;--bg3:#0f0f18;--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);--text:#eeeef5;--text2:#8888a8;--text3:#444460;--white:#fff;--dev:#22c55e;--accent:var(--dev);--accent-glow:rgba(34,197,94,0.2);--font:'Outfit',system-ui,sans-serif;--mono:'JetBrains Mono',monospace}
-html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}a{text-decoration:none;color:inherit}
+html{scroll-behavior:smooth;overflow-x:hidden}body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}a{text-decoration:none;color:inherit}
 .nav{position:sticky;top:0;z-index:100;height:60px;background:rgba(5,5,8,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 24px}
 .nav-in{max-width:1100px;margin:0 auto;height:100%;display:flex;align-items:center}
 .logo{display:flex;align-items:center;gap:8px;font-size:1.1rem;font-weight:800;letter-spacing:-0.03em}
@@ -364,7 +364,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
 [data-theme="light"] .i-ad-slot{border-color:rgba(18,19,42,.06)!important}
 
 /* ══ NAV STYLES ══ */
-.i-site-nav{display:flex;align-items:center;gap:10px;padding:0 20px;position:sticky;top:0;z-index:1000;height:62px;background:rgba(5,5,8,.96);border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(20px);transition:background .3s,border-color .3s}
+.i-site-nav{display:flex;align-items:center;gap:10px;padding:0 20px;overflow:hidden;position:sticky;top:0;z-index:1000;height:62px;background:rgba(5,5,8,.96);border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(20px);transition:background .3s,border-color .3s}
 .i-logo{display:flex;align-items:center;gap:8px;font-family:'Syne','Outfit',system-ui,sans-serif;font-size:1.05rem;font-weight:800;text-decoration:none;flex-shrink:0}
 .i-logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#e53e3e,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:.85rem}
 .i-logo-txt{background:linear-gradient(90deg,#e53e3e,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -389,7 +389,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
 .i-breadcrumb{max-width:900px;margin:0 auto;padding:10px 24px 0;display:flex;align-items:center;gap:5px;font-size:.73rem;color:var(--text3,#444460)}
 .i-breadcrumb a{color:var(--text3,#444460);text-decoration:none;transition:.15s}
 .i-breadcrumb a:hover{color:var(--text2,#8888a8)}
-@media(max-width:780px){.i-nav-cats,.i-nav-back{display:none!important}.i-ham{display:flex!important}}
+@media(max-width:780px){.i-nav-cats,.i-nav-back{display:none!important}.i-ham{display:flex!important}.i-share-btn span,.i-share-btn-label{display:none!important}}
+@media(max-width:480px){.i-share-btn{display:none!important}}
 
 /* ══ SHARE PANEL ══ */
 #i-share-overlay{display:none;position:fixed;inset:0;z-index:8800;background:rgba(0,0,0,.5);backdrop-filter:blur(6px)}
@@ -565,6 +566,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23ff4757'/><stop offset='100%25' stop-color='%23a855f7'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text y='.9em' font-size='72' x='14'>❤️</text></svg>"/>
 
+<!-- ═══ GOOGLE ADSENSE ═══════════════════════════════════════
+  ACTIVATE: Replace ca-pub-XXXXXXXXXXXXXXXXXXXX with your Publisher ID
+  Replace XXXXXXXXXX with your Ad Slot IDs from AdSense dashboard
+  Then remove the <!-- --> comment wrappers around each <ins> block
+  ═══════════════════════════════════════════════════════════ -->
+<!--ADSENSE_ACTIVE-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<!--/ADSENSE_ACTIVE-->
 </head>
 <body>
 <nav class="i-site-nav" id="i-site-nav">
@@ -606,6 +615,16 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
   <p class="hero-sub" style="color:var(--text2,#8888a8);max-width:540px;margin:0 auto;font-size:.9rem;line-height:1.7">Compute MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hashes from text or files instantly. Web Crypto API powered.</p>
 </div>
 <div class="wrap">
+<!-- AdSense: Below Hero -->
+<div class="ilc-ad-wrap" style="text-align:center;margin:0 auto 16px;max-width:900px;padding:0 24px">
+<!--ADSENSE_AD_START-->
+<!--
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXXXXXX"
+     data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+-->
+<!--ADSENSE_AD_END-->
+</div>
   <div class="ad"><!-- AdSense placeholder --></div>
   <div class="tool-ui">
     <div class="tab-bar">
@@ -634,7 +653,17 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
       <button class="btn btn-outline" onclick="copyAll()">📋 Copy All</button>
     </div>
   </div>
-  <div class="faq-sec"><h2>FAQ</h2><div class="faq-list">
+  <!-- AdSense: After Result -->
+<div class="ilc-ad-wrap" style="text-align:center;margin:16px auto;max-width:900px;padding:0 24px">
+<!--ADSENSE_AD_START-->
+<!--
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXXXXXX"
+     data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+-->
+<!--ADSENSE_AD_END-->
+</div>
+<div class="faq-sec"><h2>FAQ</h2><div class="faq-list">
     <details><summary>What is a hash?</summary><p>A hash is a fixed-length string generated from any input using a mathematical algorithm. The same input always produces the same hash, but the process cannot be reversed.</p></details>
     <details><summary>Which algorithm should I use?</summary><p>For security, prefer SHA-256 or SHA-512. MD5 and SHA-1 are cryptographically weak — use them only for checksums, not security.</p></details>
     <details><summary>Is my data safe?</summary><p>Yes — all hashing runs entirely in your browser using the Web Crypto API. No data is ever sent to any server.</p></details>
@@ -695,7 +724,7 @@ function toast(m,t='ok'){const el=document.getElementById('toast');el.textConten
   <p style="color:var(--text2);font-size:.87rem;line-height:1.8">MD5 (128-bit) is fast but not secure for passwords. SHA-256 is the security standard for digital signatures and certificates. SHA-512 provides maximum security. Use SHA-256 or SHA-512 for security purposes.</p>
 </div>
 
-<script id="ilc-site-js">
+<script src="particles.js" defer></script><script id="ilc-site-js">
 /* ══ iLoveConvert Site JS v3 ══ */
 (function(){
 /* ── THEME ── */
@@ -713,12 +742,21 @@ ilcApplyTheme(localStorage.getItem('ilc_theme')||'dark');
 
 /* ── MOBILE NAV ── */
 var _mobOpen=false;
+var _mobScrollY=0;
 window.ilcToggleMob=function(){
   _mobOpen=!_mobOpen;
   var nav=document.getElementById('i-mob-nav'),btn=document.getElementById('i-ham');
   if(!nav)return;
   nav.classList[_mobOpen?'add':'remove']('open');
-  document.body.style.overflow=_mobOpen?'hidden':'';
+  if(_mobOpen){
+    _mobScrollY=window.scrollY;
+    document.body.style.top='-'+_mobScrollY+'px';
+    document.body.classList.add('nav-open');
+  } else {
+    document.body.classList.remove('nav-open');
+    document.body.style.top='';
+    window.scrollTo(0,_mobScrollY);
+  }
   if(btn){
     btn.setAttribute('aria-expanded',_mobOpen);
     var sp=btn.querySelectorAll('span');
@@ -738,13 +776,20 @@ function ilcOpenShare(){
   var p=document.getElementById('i-share-panel'),o=document.getElementById('i-share-overlay');
   if(p)p.classList.add('open');
   if(o)o.classList.add('open');
-  document.body.style.overflow='hidden';
+  var _shareScrollY=window.scrollY;
+  document.body.style.top='-'+_shareScrollY+'px';
+  document.body.classList.add('nav-open');
+  window._shareScrollY=_shareScrollY;
 }
 function ilcCloseShare(){
   var p=document.getElementById('i-share-panel'),o=document.getElementById('i-share-overlay');
   if(p)p.classList.remove('open');
   if(o)o.classList.remove('open');
-  if(!_mobOpen)document.body.style.overflow='';
+  if(!_mobOpen){
+    document.body.classList.remove('nav-open');
+    document.body.style.top='';
+    window.scrollTo(0,window._shareScrollY||0);
+  }
 }
 window.ilcShare=function(platform){
   var url=location.href,title=document.title;

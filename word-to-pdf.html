@@ -11,7 +11,7 @@
 <title>Word to PDF – Coming Soon | iLoveConvert</title>
 <meta name="description" content="Word to PDF tool is coming soon to iLoveConvert. Currently 82% complete — launching in approximately 18 days."/>
 <meta name="robots" content="noindex,follow"/>
-<link rel="canonical" href="https://iloveconvert.app/word-to-pdf.html"/>
+<link rel="canonical" href="https://iloveconvert.vercel.app/word-to-pdf.html"/>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23e53e3e'/><stop offset='100%25' stop-color='%237c3aed'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text y='.9em' font-size='66' x='17'>❤️</text></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 :root{--bg:#050508;--bg2:#0a0a10;--bg3:#0f0f18;--border:rgba(255,255,255,.07);--bord2:rgba(255,255,255,.13);--text:#eeeef5;--text2:#8888a8;--text3:#444460;--acc:#e53e3e;--grad:linear-gradient(135deg,#e53e3e,#7c3aed);--fb:"Plus Jakarta Sans",system-ui,sans-serif;--fh:"Syne",system-ui,sans-serif}
 [data-theme="light"]{--bg:#f7f8fc;--bg2:#fff;--bg3:#f0f1f8;--border:#e4e5f0;--bord2:#c5c7de;--text:#12132a;--text2:#52546e;--text3:#9699b8}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:var(--fb);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;transition:background .3s,color .3s}
 a{text-decoration:none;color:inherit}
 button{font-family:var(--fb);cursor:pointer;border:none;background:none}
@@ -91,6 +91,40 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px;tex
   input[type=number]{font-size:16px!important}
 }
 </style>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Word to PDF Converter Online Free | iLoveConvert"/>
+<meta property="og:description" content="Convert Word documents (.docx, .doc) to PDF online free. Fast, no upload required."/>
+<meta property="og:url" content="https://iloveconvert.vercel.app/word-to-pdf.html"/>
+<meta property="og:image" content="https://iloveconvert.vercel.app/og-image.png"/>
+<meta property="og:site_name" content="iLoveConvert"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Word to PDF Converter Online Free | iLoveConvert"/>
+<meta name="twitter:description" content="Convert Word documents (.docx, .doc) to PDF online free. Fast, no upload required."/>
+<meta name="twitter:image" content="https://iloveconvert.vercel.app/og-image.png"/>
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@type":"SoftwareApplication",
+  "name":"Word to PDF Converter Online Free",
+  "applicationCategory":"WebApplication",
+  "operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},
+  "description":"Convert Word documents (.docx, .doc) to PDF online free. Fast, no upload required.",
+  "url":"https://iloveconvert.vercel.app/word-to-pdf.html",
+  "provider":{"@type":"Organization","name":"iLoveConvert","url":"https://iloveconvert.vercel.app"},
+  "featureList":"Free, No signup, Browser-based, Private, Mobile-friendly",
+  "screenshot":"https://iloveconvert.vercel.app/og-image.png"
+}</script>
+<!-- ═══ GOOGLE ADSENSE ═══════════════════════════════════════
+  HOW TO ACTIVATE:
+  1. Get AdSense approval at https://adsense.google.com
+  2. Replace ca-pub-XXXXXXXXXXXXXXXXXXXX with your Publisher ID
+  3. Replace each XXXXXXXXXX with your Ad Slot IDs
+  4. Remove the <!-- and --> comment wrappers around <ins> tags
+  ═══════════════════════════════════════════════════════ -->
+<!--ADSENSE_ACTIVE-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<!--/ADSENSE_ACTIVE-->
+<meta name="keywords" content="word to pdf, docx to pdf, convert word to pdf free"/>
 </head>
 <body>
 <nav class="nav">
@@ -181,7 +215,7 @@ function notifyMe(){
 }
 </script>
 
-<script src="supabase.js"></script>
+<script src="particles.js" defer></script><script src="supabase.js"></script>
 <script src="auth.js"></script>
 <script>if("serviceWorker"in navigator)navigator.serviceWorker.register("service-worker.js").catch(function(){});</script>
 </body>

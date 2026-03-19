@@ -303,6 +303,14 @@ button{font-family:var(--f);cursor:pointer}
 </style>
 
 <style>@media(max-width:640px){input,select,textarea{font-size:16px!important}}</style>
+<!-- ═══ GOOGLE ADSENSE ═══════════════════════════════════════
+  ACTIVATE: Replace ca-pub-XXXXXXXXXXXXXXXXXXXX with your Publisher ID
+  Replace XXXXXXXXXX with your Ad Slot IDs from AdSense dashboard
+  Then remove the <!-- --> comment wrappers around each <ins> block
+  ═══════════════════════════════════════════════════════════ -->
+<!--ADSENSE_ACTIVE-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<!--/ADSENSE_ACTIVE-->
 </head>
 <body>
 
@@ -1095,8 +1103,34 @@ document.getElementById('uScr').appendChild(seoDiv);
 </script>
 
 
-<script src="supabase.js"></script>
+<script src="particles.js" defer></script><script src="supabase.js"></script>
 <script src="auth.js"></script>
 <script>if("serviceWorker"in navigator)navigator.serviceWorker.register("service-worker.js").catch(function(){});</script>
+
+<style>
+.ilc-related{max-width:900px;margin:32px auto 0;padding:0 24px 40px}
+.ilc-related h2{font-size:1rem;font-weight:700;color:var(--text,#eeeef5);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.ilc-related h2::before{content:"";display:inline-block;width:3px;height:16px;background:linear-gradient(135deg,#e53e3e,#7c3aed);border-radius:2px}
+.ilc-rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:9px}
+.ilc-rel-card{display:flex;align-items:center;gap:9px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);text-decoration:none;color:var(--text2,#8888a8);font-size:.78rem;font-weight:600;transition:.2s;backdrop-filter:blur(8px)}
+.ilc-rel-card:hover{border-color:rgba(229,62,62,.3);color:var(--text,#eeeef5);background:rgba(229,62,62,.06);transform:translateY(-1px)}
+[data-theme="light"] .ilc-rel-card{background:rgba(255,255,255,.7);border-color:rgba(124,58,237,.12);color:#52546e}
+[data-theme="light"] .ilc-rel-card:hover{border-color:rgba(229,62,62,.25);color:#12132a;background:rgba(229,62,62,.04)}
+.ilc-rel-ic{font-size:1rem;flex-shrink:0}
+@media(max-width:480px){.ilc-rel-grid{grid-template-columns:1fr 1fr}.ilc-related{padding:0 14px 32px}}
+</style>
+<section class="ilc-related" aria-label="Related Tools">
+  <h2>Related Tools You May Need</h2>
+  <div class="ilc-rel-grid">
+    <a href="merge-pdf.html" class="ilc-rel-card"><span class="ilc-rel-ic">📑</span><span>Merge PDF</span></a>
+    <a href="compress-pdf.html" class="ilc-rel-card"><span class="ilc-rel-ic">🗜️</span><span>Compress PDF</span></a>
+    <a href="split-pdf.html" class="ilc-rel-card"><span class="ilc-rel-ic">✂️</span><span>Split PDF</span></a>
+    <a href="watermark-pdf.html" class="ilc-rel-card"><span class="ilc-rel-ic">💧</span><span>Watermark PDF</span></a>
+    <a href="protect-pdf.html" class="ilc-rel-card"><span class="ilc-rel-ic">🔒</span><span>Protect PDF</span></a>
+    <a href="pdf-to-jpg.html" class="ilc-rel-card"><span class="ilc-rel-ic">🖼️</span><span>PDF to JPG</span></a>
+    <a href="rotate-pdf.html" class="ilc-rel-card"><span class="ilc-rel-ic">🔄</span><span>Rotate PDF</span></a>
+    <a href="number-pages-pdf.html" class="ilc-rel-card"><span class="ilc-rel-ic">🔢</span><span>Number Pages</span></a>
+  </div>
+</section>
 </body>
 </html>

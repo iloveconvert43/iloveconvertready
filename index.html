@@ -15,11 +15,11 @@
 <meta name="description" content="50+ free online tools for PDF, image, video, QR codes and developers. Convert, compress, merge, edit files instantly in your browser. No signup, 100% private."/>
 <meta name="keywords" content="free online converter, pdf tools, image converter, video converter, pdf editor, compress pdf, merge pdf, qr code generator, file converter online free"/>
 <meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://iloveconvert.app/"/>
+<link rel="canonical" href="https://iloveconvert.vercel.app/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="iLoveConvert – 50+ Free Online File Tools"/>
 <meta property="og:description" content="Convert PDF, images, videos and more. Free, private, browser-based."/>
-<meta property="og:url" content="https://iloveconvert.app/"/>
+<meta property="og:url" content="https://iloveconvert.vercel.app/"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23e53e3e'/><stop offset='100%25' stop-color='%237c3aed'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text y='.9em' font-size='66' x='17'>❤️</text></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -55,8 +55,8 @@
 }
 /* RESET */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--fb);background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--fb);background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%;max-width:100%;transition:background .3s,color .3s}
 a{text-decoration:none;color:inherit}
 button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 
@@ -211,12 +211,66 @@ footer{background:#12132a;padding:52px 24px 28px;font-family:var(--fb)}
 .ft-links a:hover{color:rgba(255,255,255,.7)}
 
 /* RESPONSIVE */
-@media(max-width:768px){.nav-links,.nav-srch,.nav-cta{display:none}.nav-ham{display:flex}.tgrid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}.hero{padding:50px 18px 44px}.hero-stats{gap:22px}.hs-n{font-size:1.45rem}.ft-grid{grid-template-columns:1fr 1fr}.how-grid,.why-grid{grid-template-columns:1fr}}
-@media(max-width:520px){.tgrid{grid-template-columns:1fr 1fr}.ft-grid{grid-template-columns:1fr}.ft-btm{flex-direction:column;text-align:center}.sec-hdr{flex-direction:column;align-items:flex-start}}
+@media(max-width:768px){
+  .nav-links,.nav-srch,.nav-cta{display:none}
+  .nav-ham{display:flex}
+  .nav{padding:0 14px;gap:8px;overflow:hidden}
+  .tgrid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .hero{padding:50px 18px 44px}
+  .hero-stats{gap:22px}
+  .hs-n{font-size:1.45rem}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .how-grid,.why-grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .tgrid{grid-template-columns:1fr 1fr}
+  .ft-grid{grid-template-columns:1fr}
+  .ft-btm{flex-direction:column;text-align:center}
+  .sec-hdr{flex-direction:column;align-items:flex-start}
+  .nav{padding:0 12px;gap:6px}
+  .logo span{font-size:.92rem}
+  .hero-badge{font-size:.72rem;padding:6px 14px;max-width:90vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .hero-h1{font-size:clamp(1.8rem,9vw,2.8rem)}
+  .hero-srch input{padding:12px 110px 12px 42px;font-size:.88rem}
+  .hero-srch-btn{padding:0 14px;font-size:.8rem}
+  .filter-btn{padding:7px 12px;font-size:.77rem}
+  .cnt{padding:0 14px}
+  .sec-wrap{padding:0 14px}
+}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"iLoveConvert","url":"https://iloveconvert.app","description":"50+ free browser-based tools for PDF, image, video, QR and developer tasks."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"iLoveConvert","url":"https://iloveconvert.vercel.app","description":"50+ free browser-based tools for PDF, image, video, QR and developer tasks."}</script>
 
 <style>@media(max-width:640px){input,select,textarea{font-size:16px!important}}</style>
+<!-- ═══ GOOGLE ADSENSE ═══════════════════════════════════════
+  HOW TO ACTIVATE:
+  1. Get AdSense approval at https://adsense.google.com
+  2. Replace ca-pub-XXXXXXXXXXXXXXXXXXXX with your Publisher ID
+  3. Replace each XXXXXXXXXX with your Ad Slot IDs
+  4. Remove the <!-- and --> comment wrappers around <ins> tags
+  ═══════════════════════════════════════════════════════ -->
+<!--ADSENSE_ACTIVE-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<!--/ADSENSE_ACTIVE-->
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"iLoveConvert",
+  "url":"https://iloveconvert.vercel.app",
+  "logo":"https://iloveconvert.vercel.app/og-image.png",
+  "description":"Free browser-based tools for PDF, image, video, QR codes and developer utilities.",
+  "sameAs":[]
+}</script>
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Are all tools completely free?","acceptedAnswer":{"@type":"Answer","text":"Yes. All 50+ tools on iLoveConvert are 100% free with no hidden fees, no signup required and no file limits."}},
+    {"@type":"Question","name":"Do my files get uploaded to your servers?","acceptedAnswer":{"@type":"Answer","text":"Never. All processing happens locally in your browser using JavaScript. Your files never leave your device."}},
+    {"@type":"Question","name":"Does iLoveConvert work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes. iLoveConvert is fully responsive and works on all devices — iPhone, Android, tablet and desktop."}},
+    {"@type":"Question","name":"What file formats are supported?","acceptedAnswer":{"@type":"Answer","text":"iLoveConvert supports PDF, JPG, PNG, WebP, GIF, MP4, WebM, and many more formats across our 50+ tools."}},
+    {"@type":"Question","name":"Is iLoveConvert available as an app?","acceptedAnswer":{"@type":"Answer","text":"Yes! iLoveConvert is a Progressive Web App (PWA). You can install it from your browser and use it offline."}}
+  ]
+}</script>
 </head>
 <body>
 
@@ -323,6 +377,16 @@ footer{background:#12132a;padding:52px 24px 28px;font-family:var(--fb)}
 </section>
 
 <!-- PDF TOOLS -->
+<!-- AdSense: Leaderboard Banner -->
+<div class="ilc-ad-wrap" style="text-align:center;margin:12px auto;max-width:1100px;padding:0 24px">
+<!--ADSENSE_AD_START-->
+<!--
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXXXXXX"
+     data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+-->
+<!--ADSENSE_AD_END-->
+</div>
 <section class="sec" id="pdf">
   <div class="cnt">
     <div class="sec-hdr">
@@ -521,12 +585,28 @@ function stayLight(){localStorage.setItem('ilc_theme_asked','1');applyTheme('lig
 })();
 /* MOBILE NAV */
 var _mob=false;
+var _scrollY=0;
 function toggleMob(){
   _mob=!_mob;var nav=document.getElementById('mobDrawer'),btn=document.getElementById('mainHamBtn');
-  if(_mob){nav.classList.add('open');btn.setAttribute('aria-expanded','true');var s=btn.querySelectorAll('span');s[0].style.transform='rotate(45deg) translate(5px,5px)';s[1].style.opacity='0';s[2].style.transform='rotate(-45deg) translate(5px,-5px)';}
+  if(_mob){
+    nav.classList.add('open');btn.setAttribute('aria-expanded','true');
+    /* Lock body scroll — prevent page shift */
+    _scrollY=window.scrollY;
+    document.body.style.top='-'+_scrollY+'px';
+    document.body.classList.add('nav-open');
+    var s=btn.querySelectorAll('span');s[0].style.transform='rotate(45deg) translate(5px,5px)';s[1].style.opacity='0';s[2].style.transform='rotate(-45deg) translate(5px,-5px)';
+  }
   else{closeMob();}
 }
-function closeMob(){_mob=false;var nav=document.getElementById('mobDrawer'),btn=document.getElementById('mainHamBtn');nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.querySelectorAll('span').forEach(function(s){s.style.transform='';s.style.opacity='';});}
+function closeMob(){
+  _mob=false;var nav=document.getElementById('mobDrawer'),btn=document.getElementById('mainHamBtn');
+  nav.classList.remove('open');btn.setAttribute('aria-expanded','false');
+  /* Restore scroll */
+  document.body.classList.remove('nav-open');
+  document.body.style.top='';
+  window.scrollTo(0,_scrollY);
+  btn.querySelectorAll('span').forEach(function(s){s.style.transform='';s.style.opacity='';});
+}
 document.addEventListener('click',function(e){if(_mob&&!e.target.closest('#mobDrawer')&&!e.target.closest('#mainHamBtn'))closeMob();});
 /* SCROLL ANIMATIONS */
 var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
@@ -535,7 +615,7 @@ document.querySelectorAll('.how-step,.wc').forEach(function(el){io.observe(el);}
 window.addEventListener('scroll',function(){document.getElementById('mainNav').style.boxShadow=window.scrollY>8?'0 2px 20px rgba(0,0,0,.1)':'';},{passive:true});
 </script>
 
-<script src="supabase.js"></script>
+<script src="particles.js" defer></script><script src="supabase.js"></script>
 <script src="auth.js"></script>
 <script>if("serviceWorker"in navigator)navigator.serviceWorker.register("service-worker.js").catch(function(){});</script>
 </body>

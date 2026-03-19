@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>html,body{overflow-x:hidden!important}</style>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0"/>
 <title>Tool History — iLoveConvert</title>
@@ -147,7 +148,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Plus Jakarta Sans',syste
 
 <div id="histToast"></div>
 
-<script src="supabase.js"></script>
+<script src="particles.js" defer></script><script src="supabase.js"></script>
 <script src="auth.js"></script>
 <script>
 function ilcToggleTheme(){var t=(localStorage.getItem('ilc_theme')||'dark')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('ilc_theme',t);}

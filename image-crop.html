@@ -37,7 +37,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#050508;--bg2:#0a0a10;--bg3:#0f0f18;--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);--text:#eeeef5;--text2:#8888a8;--text3:#444460;--white:#fff;--accent:var(--img);--accent-glow:rgba(0,210,255,0.2);--font:'Outfit',system-ui,sans-serif;--mono:'JetBrains Mono',monospace}
-html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}a{text-decoration:none;color:inherit}
+html{scroll-behavior:smooth;overflow-x:hidden}body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}a{text-decoration:none;color:inherit}
 .nav{position:sticky;top:0;z-index:100;height:60px;background:rgba(5,5,8,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 24px}
 .nav-in{max-width:1100px;margin:0 auto;height:100%;display:flex;align-items:center}
 .logo{display:flex;align-items:center;gap:8px;font-size:1.1rem;font-weight:800;letter-spacing:-0.03em}
@@ -389,7 +389,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
 [data-theme="light"] .i-ad-slot{border-color:rgba(18,19,42,.06)!important}
 
 /* ══ NAV STYLES ══ */
-.i-site-nav{display:flex;align-items:center;gap:10px;padding:0 20px;position:sticky;top:0;z-index:1000;height:62px;background:rgba(5,5,8,.96);border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(20px);transition:background .3s,border-color .3s}
+.i-site-nav{display:flex;align-items:center;gap:10px;padding:0 20px;overflow:hidden;position:sticky;top:0;z-index:1000;height:62px;background:rgba(5,5,8,.96);border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(20px);transition:background .3s,border-color .3s}
 .i-logo{display:flex;align-items:center;gap:8px;font-family:'Syne','Outfit',system-ui,sans-serif;font-size:1.05rem;font-weight:800;text-decoration:none;flex-shrink:0}
 .i-logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#e53e3e,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:.85rem}
 .i-logo-txt{background:linear-gradient(90deg,#e53e3e,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -414,7 +414,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
 .i-breadcrumb{max-width:900px;margin:0 auto;padding:10px 24px 0;display:flex;align-items:center;gap:5px;font-size:.73rem;color:var(--text3,#444460)}
 .i-breadcrumb a{color:var(--text3,#444460);text-decoration:none;transition:.15s}
 .i-breadcrumb a:hover{color:var(--text2,#8888a8)}
-@media(max-width:780px){.i-nav-cats,.i-nav-back{display:none!important}.i-ham{display:flex!important}}
+@media(max-width:780px){.i-nav-cats,.i-nav-back{display:none!important}.i-ham{display:flex!important}.i-share-btn span,.i-share-btn-label{display:none!important}}
+@media(max-width:480px){.i-share-btn{display:none!important}}
 
 /* ══ SHARE PANEL ══ */
 #i-share-overlay{display:none;position:fixed;inset:0;z-index:8800;background:rgba(0,0,0,.5);backdrop-filter:blur(6px)}
@@ -648,6 +649,16 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
   <p class="hero-sub" style="color:var(--text2,#8888a8);max-width:540px;margin:0 auto;font-size:.9rem;line-height:1.7">Crop to any aspect ratio with a visual drag-and-drop interface. Perfect crops for Instagram, YouTube, print. Browser-based.</p>
 </div>
 <div class="wrap">
+<!-- AdSense: Below Hero -->
+<div class="ilc-ad-wrap" style="text-align:center;margin:0 auto 16px;max-width:900px;padding:0 24px">
+<!--ADSENSE_AD_START-->
+<!--
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXXXXXX"
+     data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+-->
+<!--ADSENSE_AD_END-->
+</div>
   <div class="ad"><!-- AdSense unit — uncomment after approval
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>// (adsbygoogle = window.adsbygoogle || []).push({}); // Activate after AdSense approval</script>
@@ -675,6 +686,16 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
   </div>
 </div>
 <div class="result" id="res" style="margin-top:16px"></div>
+<!-- AdSense: After Result -->
+<div class="ilc-ad-wrap" style="text-align:center;margin:16px auto;max-width:900px;padding:0 24px">
+<!--ADSENSE_AD_START-->
+<!--
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXXXXXX"
+     data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+-->
+<!--ADSENSE_AD_END-->
+</div>
 <div class="faq-sec"><h2>FAQ</h2><div class="faq-list">
   <details><summary>What formats are supported?</summary><p>JPG, PNG, WEBP, BMP, and most browser-supported image formats.</p></details>
   <details><summary>Will cropping reduce quality?</summary><p>PNG output preserves full quality. JPG output uses 95% quality.</p></details>
@@ -754,7 +775,7 @@ function toast(m,t='ok'){const el=document.getElementById('toast');el.textConten
   <p style="color:var(--text2);font-size:.87rem;line-height:1.8">Click and drag directly on the image preview to set the crop region visually. The X, Y, W, H inputs update automatically. Fine-tune the numbers for pixel-perfect crops.</p>
 </div>
 
-<script id="ilc-site-js">
+<script src="particles.js" defer></script><script id="ilc-site-js">
 /* ══ iLoveConvert Site JS v3 ══ */
 (function(){
 /* ── THEME ── */
@@ -772,12 +793,21 @@ ilcApplyTheme(localStorage.getItem('ilc_theme')||'dark');
 
 /* ── MOBILE NAV ── */
 var _mobOpen=false;
+var _mobScrollY=0;
 window.ilcToggleMob=function(){
   _mobOpen=!_mobOpen;
   var nav=document.getElementById('i-mob-nav'),btn=document.getElementById('i-ham');
   if(!nav)return;
   nav.classList[_mobOpen?'add':'remove']('open');
-  document.body.style.overflow=_mobOpen?'hidden':'';
+  if(_mobOpen){
+    _mobScrollY=window.scrollY;
+    document.body.style.top='-'+_mobScrollY+'px';
+    document.body.classList.add('nav-open');
+  } else {
+    document.body.classList.remove('nav-open');
+    document.body.style.top='';
+    window.scrollTo(0,_mobScrollY);
+  }
   if(btn){
     btn.setAttribute('aria-expanded',_mobOpen);
     var sp=btn.querySelectorAll('span');
@@ -797,13 +827,20 @@ function ilcOpenShare(){
   var p=document.getElementById('i-share-panel'),o=document.getElementById('i-share-overlay');
   if(p)p.classList.add('open');
   if(o)o.classList.add('open');
-  document.body.style.overflow='hidden';
+  var _shareScrollY=window.scrollY;
+  document.body.style.top='-'+_shareScrollY+'px';
+  document.body.classList.add('nav-open');
+  window._shareScrollY=_shareScrollY;
 }
 function ilcCloseShare(){
   var p=document.getElementById('i-share-panel'),o=document.getElementById('i-share-overlay');
   if(p)p.classList.remove('open');
   if(o)o.classList.remove('open');
-  if(!_mobOpen)document.body.style.overflow='';
+  if(!_mobOpen){
+    document.body.classList.remove('nav-open');
+    document.body.style.top='';
+    window.scrollTo(0,window._shareScrollY||0);
+  }
 }
 window.ilcShare=function(platform){
   var url=location.href,title=document.title;

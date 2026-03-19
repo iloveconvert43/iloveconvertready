@@ -146,6 +146,26 @@ img{max-width:100%}
 
 .cat-hero{--color-glow:rgba(229,62,62,0.15)}
 </style>
+<!-- ═══ GOOGLE ADSENSE ═══════════════════════════════════════
+  ACTIVATE: Replace ca-pub-XXXXXXXXXXXXXXXXXXXX with your Publisher ID
+  Replace XXXXXXXXXX with your Ad Slot IDs from AdSense dashboard
+  Then remove the <!-- --> comment wrappers around each <ins> block
+  ═══════════════════════════════════════════════════════════ -->
+<!--ADSENSE_ACTIVE-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<!--/ADSENSE_ACTIVE-->
+<meta name="robots" content="index, follow"/>
+<script type="application/ld+json">{
+  "@context":"https://schema.org","@type":"HowTo",
+  "name":"How to Use Free PDF Tools Online",
+  "description":"Convert, compress, merge, split and edit PDF files free in your browser",
+  "step":[
+    {"@type":"HowToStep","name":"Choose a PDF Tool","text":"Select the PDF tool you need from our 20+ free PDF utilities."},
+    {"@type":"HowToStep","name":"Upload Your PDF","text":"Drag and drop your PDF file or click to browse and select it."},
+    {"@type":"HowToStep","name":"Configure Settings","text":"Adjust any tool-specific settings like compression level or page range."},
+    {"@type":"HowToStep","name":"Process and Download","text":"Click the action button. Your file is processed locally and downloads instantly."}
+  ]
+}</script>
 </head>
 <body>
 
@@ -407,7 +427,7 @@ if(typeof IntersectionObserver!=='undefined'){
 
 </script>
 
-<script src="supabase.js"></script>
+<script src="particles.js" defer></script><script src="supabase.js"></script>
 <script src="auth.js"></script>
 <script>if("serviceWorker"in navigator)navigator.serviceWorker.register("service-worker.js").catch(function(){});</script>
 </body>

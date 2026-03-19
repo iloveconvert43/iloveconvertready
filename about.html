@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>html,body{overflow-x:hidden!important}</style>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0"/>
 <link rel="manifest" href="manifest.json"/>
 <meta name="theme-color" content="#e53e3e"/>
@@ -10,7 +11,7 @@
 <title>About iLoveConvert – Free Online File Converter & Tool Suite</title>
 <meta name="description" content="iLoveConvert is a free online toolkit with 50+ tools for PDF, image, video, QR codes and developers. 100% browser-based, no signup, completely private."/>
 <meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://iloveconvert.app/about.html"/>
+<link rel="canonical" href="https://iloveconvert.vercel.app/about.html"/>
 <meta property="og:title" content="About iLoveConvert – Free Online Converter Tools"/>
 <meta property="og:description" content="50+ free browser-based tools. No signup, no upload, 100% private."/>
 <meta property="og:type" content="website"/>
@@ -50,6 +51,25 @@ footer p{font-size:.7rem;color:var(--text3)}
   input[type=number]{font-size:16px!important}
 }
 </style>
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@type":"AboutPage",
+  "name":"About iLoveConvert – Free Browser-Based File Tools",
+  "description":"Learn about iLoveConvert — 50+ free online tools for PDF, image, video and QR codes. No server uploads, 100% private, works in your browser.",
+  "url":"https://iloveconvert.vercel.app/about.html",
+  "isPartOf":{"@type":"WebSite","name":"iLoveConvert","url":"https://iloveconvert.vercel.app"}
+}</script>
+<!-- ═══ GOOGLE ADSENSE ═══════════════════════════════════════
+  HOW TO ACTIVATE:
+  1. Get AdSense approval at https://adsense.google.com
+  2. Replace ca-pub-XXXXXXXXXXXXXXXXXXXX with your Publisher ID
+  3. Replace each XXXXXXXXXX with your Ad Slot IDs
+  4. Remove the <!-- and --> comment wrappers around <ins> tags
+  ═══════════════════════════════════════════════════════ -->
+<!--ADSENSE_ACTIVE-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<!--/ADSENSE_ACTIVE-->
+<meta name="keywords" content="about iloveconvert, free online file tools, browser based converter"/>
 </head>
 <body>
 <nav class="nav">
@@ -93,7 +113,7 @@ footer p{font-size:.7rem;color:var(--text3)}
   <div class="fl"><a href="index.html">Home</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div>
 </footer>
 
-<script src="supabase.js"></script>
+<script src="particles.js" defer></script><script src="supabase.js"></script>
 <script src="auth.js"></script>
 <script>if("serviceWorker"in navigator)navigator.serviceWorker.register("service-worker.js").catch(function(){});</script>
 </body>

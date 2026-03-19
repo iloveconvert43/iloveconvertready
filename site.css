@@ -369,3 +369,147 @@ canvas { max-width: 100%; }
   .i-rel-grid { grid-template-columns: 1fr 1fr !important; }
   .i-rel-card { padding: 10px 8px !important; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   PARTICLE CANVAS BACKGROUND + GLASS MORPHISM  v2.0
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Body: let canvas show through ─────────────────────────── */
+html, body {
+  background: transparent !important;
+}
+/* Dark base so canvas is always visible on load */
+body:not(.light-mode) {
+  background-color: #05050c !important;
+}
+body.light-mode {
+  background-color: #f5f4ff !important;
+}
+
+/* ── Particle canvas ──────────────────────────────────────── */
+#ilcParticleCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  display: block;
+}
+
+/* ── Glass Morphism: Tool cards (dark mode) ────────────────── */
+.i-card,
+.tool-card,
+.i-rel-card,
+.i-upload-area,
+.i-box,
+.i-result,
+.i-faq-item,
+.i-hero,
+.i-opts,
+.i-seo-section {
+  background: rgba(15, 10, 35, 0.62) !important;
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid rgba(120, 80, 255, 0.15) !important;
+  box-shadow:
+    0 4px 32px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.05) !important;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.i-card:hover,
+.tool-card:hover,
+.i-rel-card:hover {
+  border-color: rgba(229, 62, 62, 0.3) !important;
+  box-shadow:
+    0 8px 40px rgba(124,58,237,0.18),
+    0 0 0 1px rgba(229,62,62,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.08) !important;
+}
+
+/* ── Glass Morphism: Tool cards (light mode) ───────────────── */
+body.light-mode .i-card,
+body.light-mode .tool-card,
+body.light-mode .i-rel-card,
+body.light-mode .i-upload-area,
+body.light-mode .i-box,
+body.light-mode .i-result,
+body.light-mode .i-faq-item,
+body.light-mode .i-hero,
+body.light-mode .i-opts,
+body.light-mode .i-seo-section {
+  background: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border: 1px solid rgba(124,58,237,0.12) !important;
+  box-shadow:
+    0 4px 24px rgba(124,58,237,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.9) !important;
+}
+
+body.light-mode .i-card:hover,
+body.light-mode .tool-card:hover,
+body.light-mode .i-rel-card:hover {
+  border-color: rgba(229,62,62,0.25) !important;
+  box-shadow:
+    0 8px 32px rgba(124,58,237,0.14),
+    inset 0 1px 0 rgba(255,255,255,1) !important;
+}
+
+/* ── Homepage tool category cards ──────────────────────────── */
+.wc {
+  background: rgba(15, 10, 35, 0.58) !important;
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  border: 1px solid rgba(120,80,255,0.13) !important;
+  transition: all 0.3s;
+}
+.wc:hover {
+  border-color: rgba(229,62,62,0.28) !important;
+  background: rgba(20,12,50,0.72) !important;
+  transform: translateY(-2px);
+}
+body.light-mode .wc {
+  background: rgba(255,255,255,0.68) !important;
+  border: 1px solid rgba(124,58,237,0.10) !important;
+}
+body.light-mode .wc:hover {
+  background: rgba(255,255,255,0.88) !important;
+  border-color: rgba(229,62,62,0.2) !important;
+}
+
+/* ── Nav glass upgrade ──────────────────────────────────────── */
+#siteNav, #mainNav {
+  backdrop-filter: blur(24px) saturate(1.5) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.5) !important;
+}
+
+/* ── Upload drop zone glow on hover ─────────────────────────── */
+.i-upload-area:hover,
+.i-upload-area.drag-over {
+  border-color: rgba(229,62,62,0.45) !important;
+  background: rgba(229,62,62,0.06) !important;
+  box-shadow:
+    0 0 0 3px rgba(229,62,62,0.1),
+    0 8px 40px rgba(124,58,237,0.2) !important;
+}
+body.light-mode .i-upload-area:hover,
+body.light-mode .i-upload-area.drag-over {
+  border-color: rgba(229,62,62,0.35) !important;
+  background: rgba(229,62,62,0.03) !important;
+}
+
+/* ── Ensure canvas tool elements don't break ─────────────────── */
+canvas#ilcParticleCanvas {
+  max-width: none !important;
+}
+
+/* ── Mobile: reduce blur for performance ─────────────────────── */
+@media (max-width: 640px) {
+  .i-card, .tool-card, .i-rel-card,
+  .i-upload-area, .i-box, .i-result,
+  .i-faq-item, .i-hero, .i-opts, .wc {
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+}
