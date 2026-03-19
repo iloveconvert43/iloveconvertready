@@ -1,13 +1,9 @@
 User-agent: *
 Allow: /
 
+Disallow: /dashboard.html
+Disallow: /account.html
+Disallow: /history.html
+Disallow: /login.html
+
 Sitemap: https://iloveconvert.vercel.app/sitemap.xml
-
-# Block search result pages
-Disallow: /*?*
-
-# Allow all tools, pages and assets
-Allow: /*.html
-Allow: /*.css
-Allow: /*.js
-Allow: /*.xml

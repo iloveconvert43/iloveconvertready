@@ -9,6 +9,44 @@
    ═══════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
+  /* ── SECURITY: Safe redirect — blocks open redirect attacks ─── */
+  function ilcSafeRedirect(url) {
+    if (!url) return 'dashboard.html';
+    /* Block: absolute URLs, protocol-relative, data:, javascript: */
+    if (/^(https?:|\/\/|javascript:|data:|vbscript:)/i.test(url.trim())) {
+      return 'dashboard.html';
+    }
+    /* Block: anything with @, backslash sequences, or path traversal */
+    if (/[@\\]|\.\.\//.test(url)) {
+      return 'dashboard.html';
+    }
+    /* Only allow .html pages we know about */
+    var ALLOWED_PAGES = [
+      'index.html','dashboard.html','history.html','account.html',
+      'pdf-tools.html','image-tools.html','video-tools.html',
+      'qr-tools.html','developer-tools.html','pdf-editor.html',
+      'merge-pdf.html','compress-pdf.html','split-pdf.html','rotate-pdf.html',
+      'watermark-pdf.html','protect-pdf.html','unlock-pdf.html',
+      'jpg-to-pdf.html','pdf-to-jpg.html','pdf-to-text.html','pdf-to-word.html',
+      'word-to-pdf.html','excel-to-pdf.html','ppt-to-pdf.html',
+      'image-compress.html','image-resize.html','image-convert.html',
+      'image-crop.html','image-rotate.html','image-watermark.html',
+      'image-to-base64.html','ico-converter.html','grayscale.html','exif-remover.html',
+      'color-picker.html','remove-bg.html','video-to-mp3.html','video-screenshot.html',
+      'video-gif.html','video-trim.html','video-compress.html','video-converter.html',
+      'video-mute.html','video-watermark.html','qr-generator.html','qr-scanner.html',
+      'url-qr.html','wifi-qr.html','vcard-qr.html','barcode-gen.html',
+      'json-formatter.html','js-minifier.html','base64.html','hash-generator.html',
+      'html-encode.html','password-gen.html','about.html','contact.html',
+      'privacy.html','terms.html',
+    ];
+    /* Strip query/hash for comparison */
+    var page = url.split('?')[0].split('#')[0].replace(/^\//, '');
+    if (ALLOWED_PAGES.indexOf(page) !== -1) return url;
+    return 'dashboard.html';
+  }
+
+
 
   /* ── CONSTANTS ─────────────────────────────────── */
   var PROTECTED  = ['dashboard.html', 'history.html', 'account.html'];
@@ -300,7 +338,9 @@
       location.replace(LOGIN_PAGE + '?next=' + encodeURIComponent(page));
     }
     if (page === LOGIN_PAGE && user) {
-      var next = new URLSearchParams(location.search).get('next') || 'dashboard.html';
+      var rawNext = new URLSearchParams(location.search).get('next') || 'dashboard.html';
+      /* SECURITY: Prevent open redirect - only allow relative same-origin paths */
+      var next = ilcSafeRedirect(rawNext);
       location.replace(next);
     }
   }
@@ -380,11 +420,15 @@
   /* ── PUBLIC: ilcLogHistory (tool pages call this on action) ── */
   window.ilcLogHistory = function (toolName, fileName, actionType, resultUrl) {
     var user = window._ilcCurrentUser;
+    /* SECURITY: Sanitize all inputs before DB write */
+    function sanitizeField(s, maxLen) {
+      return String(s || '').replace(/<[^>]*>/g, '').replace(/[<>"']/g, '').trim().slice(0, maxLen || 200);
+    }
     var record = {
-      tool_name  : toolName   || getToolName(),
-      file_name  : fileName   || '',
-      action_type: actionType || 'convert',
-      result_url : resultUrl  || null,
+      tool_name  : sanitizeField(toolName   || getToolName(), 100),
+      file_name  : sanitizeField(fileName   || '', 255),
+      action_type: sanitizeField(actionType || 'convert', 50),
+      result_url : resultUrl ? sanitizeField(resultUrl, 500) : null,
       created_at : new Date().toISOString()
     };
     if (user && window.ilcSupabase) {
@@ -418,8 +462,9 @@
     if (!user) { toast('👤 Sign in to save favourites'); return; }
     var idx = window._ilcFavs.indexOf(toolName);
     if (idx === -1) {
+      var safeTool = String(toolName || '').replace(/[^a-z0-9_-]/gi, '').slice(0, 100);
       window.ilcSupabase.from('favorite_tools')
-        .insert([{ user_id: user.id, tool_name: toolName, created_at: new Date().toISOString() }])
+        .insert([{ user_id: user.id, tool_name: safeTool, created_at: new Date().toISOString() }])
         .then(function (r) {
           if (!r.error) { window._ilcFavs.push(toolName); updateFavBtn(); toast('⭐ Added to favourites!'); }
         });

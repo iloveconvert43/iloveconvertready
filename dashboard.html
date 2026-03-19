@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <style>html,body{overflow-x:hidden!important}</style>
+<meta name="google-site-verification" content="CaRLOiNJzL-hIl8BLkF73B7sEqTVoWw4Jdh1FGKftSI"/>
+<meta name="google-adsense-account" content="ca-pub-3911955257661932">
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0"/>
 <title>Dashboard — iLoveConvert</title>
@@ -286,7 +288,7 @@ function loadDashboard(sb, userId) {
       favs.forEach(function (f) {
         var page = TOOL_PAGES[f.tool_name] || 'index.html';
         favHtml += '<a href="' + page + '" class="fav-card"><span class="fav-card-ic">' +
-          getIcon(f.tool_name) + '</span>' + (f.tool_name || 'Tool') + '</a>';
+          getIcon(f.tool_name) + '</span>' + escHtml(f.tool_name || 'Tool') + '</a>';
       });
       favsWrap.innerHTML = favHtml + '</div>';
     }
@@ -335,6 +337,13 @@ setTimeout(function () {
     }
   }
 }, 5000);
+</script>
+<script>
+function escHtml(s){
+  return(s||'').toString()
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#x27;').replace(/[/]/g,'&#x2F;');
+}
 </script>
 </body>
 </html>

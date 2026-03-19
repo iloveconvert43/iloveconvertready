@@ -2,6 +2,8 @@
 <html lang="en" data-theme="dark">
 <head>
 <style>html,body{overflow-x:hidden!important}</style>
+<meta name="google-site-verification" content="CaRLOiNJzL-hIl8BLkF73B7sEqTVoWw4Jdh1FGKftSI"/>
+<meta name="google-adsense-account" content="ca-pub-3911955257661932">
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0"/>
 <title>Sign In — iLoveConvert</title>
@@ -239,6 +241,17 @@ function clearMsg() {
   document.getElementById('authMsg').className = 'msg';
 }
 
+
+function ilcSafeLoginRedirect(url) {
+  if (!url) return 'dashboard.html';
+  if (/^(https?:|\/\/|javascript:|data:)/i.test(url.trim())) return 'dashboard.html';
+  if (url.indexOf('@') !== -1 || url.indexOf('..') !== -1) return 'dashboard.html';
+  var ALLOWED = ['dashboard.html','account.html','history.html','index.html',
+    'pdf-editor.html','merge-pdf.html','compress-pdf.html','image-compress.html'];
+  var page = url.split('?')[0].split('#')[0];
+  if (page.endsWith('.html') && ALLOWED.indexOf(page) !== -1) return url;
+  return 'dashboard.html';
+}
 function getNext() {
   return new URLSearchParams(location.search).get('next') || 'dashboard.html';
 }
@@ -248,7 +261,7 @@ function googleLogin() {
   waitSupabase(function (sb) {
     sb.auth.signInWithOAuth({
       provider  : 'google',
-      options   : { redirectTo: location.origin + '/' + getNext() }
+      options   : { redirectTo: location.origin + '/' + ilcSafeLoginRedirect(getNext()) }
     }).then(function (r) {
       if (r.error) showMsg('❌ ' + r.error.message);
     });

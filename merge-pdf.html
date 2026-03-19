@@ -25,8 +25,10 @@
        Step 3: Uncomment the script tag
   ════════════════════════════════════════════════════════ -->
   <!--
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3911955257661932" crossorigin="anonymous"></script>
   -->
+<meta name="google-site-verification" content="CaRLOiNJzL-hIl8BLkF73B7sEqTVoWw4Jdh1FGKftSI"/>
+<meta name="google-adsense-account" content="ca-pub-3911955257661932">
 <meta charset="UTF-8"/>
 <meta name="robots" content="index, follow"/><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0"/>
 <link rel="manifest" href="manifest.json"/>
@@ -70,7 +72,7 @@ a{text-decoration:none;color:inherit}
 /* WRAP */
 .wrap{max-width:900px;margin:40px auto;padding:0 24px}
 /* DROPZONE */
-.dz{background:var(--bg2);border:2px dashed var(--border);border-radius:18px;padding:52px 28px;text-align:center;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
+.dz{background:rgba(10,6,22,0.5);border:2px dashed rgba(255,255,255,0.1);border-radius:18px;padding:52px 28px;text-align:center;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
 .dz:hover,.dz.over{border-color:var(--accent);background:rgba(255,255,255,0.02)}
 .dz input{position:absolute;inset:0;opacity:0;cursor:pointer}
 .dz-em{font-size:3rem;margin-bottom:14px;display:block}
@@ -212,7 +214,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
 [data-theme="light"] .tool-hero{background:linear-gradient(180deg,#fff 0%,#f7f8fc 100%)!important}
 [data-theme="light"] .tool-hero h1{color:#12132a!important}
 [data-theme="light"] .tool-hero p,.tool-hero .subtitle{color:#52546e}
-[data-theme="light"] .dz{background:#fff!important;border-color:#c5c7de!important}
+[data-theme="light"] .dz{background:rgba(255,255,255,.6)!important;border-color:rgba(18,19,42,.09)!important}
 [data-theme="light"] .dz:hover,[data-theme="light"] .dz.over{border-color:var(--accent)!important;background:rgba(229,62,62,.02)!important}
 [data-theme="light"] .dz h3{color:#12132a!important}
 [data-theme="light"] .dz p{color:#52546e!important}
@@ -378,7 +380,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
 [data-theme="light"] .nav{background:rgba(255,255,255,.97)!important;border-bottom-color:rgba(18,19,42,.08)!important}
 [data-theme="light"] .tool-hero{background:linear-gradient(180deg,#fff 0%,#f7f8fc 100%)!important}
 [data-theme="light"] .tool-hero h1,[data-theme="light"] h1{color:#12132a!important}
-[data-theme="light"] .dz{background:#fff!important;border-color:rgba(18,19,42,.15)!important}
+[data-theme="light"] .dz{background:rgba(255,255,255,.6)!important;border-color:rgba(18,19,42,.09)!important}
 [data-theme="light"] .dz h3{color:#12132a!important}
 [data-theme="light"] .dz p{color:#52546e!important}
 [data-theme="light"] .opts,.wrap .opts{background:#fff!important;border-color:rgba(18,19,42,.1)!important}
@@ -764,7 +766,7 @@ dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('over');ad
 fi.addEventListener('change',e=>add(Array.from(e.target.files)));
 function add(f){const p=f.filter(x=>x.name.toLowerCase().endsWith('.pdf'));if(!p.length){toast('Select PDF files only','err');return;}files=[...files,...p];render();toast(p.length+' PDF(s) added');}
 function remove(i){files.splice(i,1);render();}
-function render(){fl.style.display=files.length?'flex':'none';ab.style.display=files.length?'flex':'none';fl.innerHTML=files.map((f,i)=>`<div class="fitem"><span class="fi-ic">📄</span><div class="fi-info"><div class="fi-nm">${f.name}</div><div class="fi-sz">${fmt(f.size)}</div></div><button class="fi-rm" onclick="remove(${i})">✕</button></div>`).join('');}
+function render(){fl.style.display=files.length?'flex':'none';ab.style.display=files.length?'flex':'none';fl.innerHTML=files.map((f,i)=>`<div class="fitem"><span class="fi-ic">📄</span><div class="fi-info"><div class="fi-nm">${esc(f.name)}</div><div class="fi-sz">${fmt(f.size)}</div></div><button class="fi-rm" onclick="remove(${i})">✕</button></div>`).join('');}
 function fmt(b){if(!b)return'0 B';const k=1024,s=['B','KB','MB','GB'],i=Math.floor(Math.log(b)/Math.log(k));return(b/Math.pow(k,i)).toFixed(1)+' '+s[i];}
 async function go(){
   if(files.length<2){toast('Add at least 2 PDFs','err');return;}
@@ -783,6 +785,7 @@ function reset(){files=[];render();document.getElementById('res').classList.remo
 function prog(on,lbl){const w=document.getElementById('pw');w.classList[on?'add':'remove']('on');if(lbl)document.getElementById('pl').textContent=lbl;}
 function pct(p,l){document.getElementById('pf').style.width=p+'%';if(l)document.getElementById('pl').textContent=l;}
 function showResult(name,url,title){const r=document.getElementById('res');r.innerHTML=`<span class="res-ic">✅</span><h3>${title}</h3><p>${name}</p><div class="rbtn"><a href="${url}" download="${name}" class="btn btn-success btn-lg">⬇️ Download</a><button onclick="reset()" class="btn btn-outline btn-lg">🔄 New File</button></div>`;r.classList.add('on');r.scrollIntoView({behavior:'smooth',block:'center'});}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;');}
 function toast(m,t='ok'){const el=document.getElementById('toast');el.textContent=m;el.className='on';setTimeout(()=>el.className='',3500);}
 </script><script src="particles.js" defer></script><script id="ilc-site-js">
 /* ══ iLoveConvert Site JS v3 ══ */

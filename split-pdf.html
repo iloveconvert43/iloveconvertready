@@ -25,7 +25,7 @@
        Step 3: Uncomment the script tag
   ════════════════════════════════════════════════════════ -->
   <!--
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3911955257661932" crossorigin="anonymous">
 function dlSplitZip(){
   if(!window._splitLinks)return;
   const zip=new JSZip();
@@ -34,6 +34,8 @@ function dlSplitZip(){
 }
 </script>
   -->
+<meta name="google-site-verification" content="CaRLOiNJzL-hIl8BLkF73B7sEqTVoWw4Jdh1FGKftSI"/>
+<meta name="google-adsense-account" content="ca-pub-3911955257661932">
 <meta charset="UTF-8"/>
 <meta name="robots" content="index, follow"/><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0"/>
 <link rel="manifest" href="manifest.json"/>
@@ -62,7 +64,7 @@ html{scroll-behavior:smooth;overflow-x:hidden}body{font-family:var(--font);backg
 .tool-hero h1{font-size:2rem;font-weight:900;color:var(--white);margin-bottom:10px;letter-spacing:-0.03em}
 .tool-hero p{color:var(--text2);max-width:480px;margin:0 auto;font-size:.9rem;line-height:1.65}
 .wrap{max-width:900px;margin:36px auto;padding:0 24px}
-.dz{background:var(--bg2);border:2px dashed var(--border);border-radius:18px;padding:52px 28px;text-align:center;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
+.dz{background:rgba(10,6,22,0.5);border:2px dashed rgba(255,255,255,0.1);border-radius:18px;padding:52px 28px;text-align:center;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
 .dz:hover,.dz.over{border-color:var(--accent);background:rgba(255,255,255,0.02)}
 .dz input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
 .dz-em{font-size:3rem;margin-bottom:14px;display:block}
@@ -178,7 +180,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
 [data-theme="light"] .tool-hero{background:linear-gradient(180deg,#fff 0%,#f7f8fc 100%)!important}
 [data-theme="light"] .tool-hero h1{color:#12132a!important}
 [data-theme="light"] .tool-hero p,.tool-hero .subtitle{color:#52546e}
-[data-theme="light"] .dz{background:#fff!important;border-color:#c5c7de!important}
+[data-theme="light"] .dz{background:rgba(255,255,255,.6)!important;border-color:rgba(18,19,42,.09)!important}
 [data-theme="light"] .dz:hover,[data-theme="light"] .dz.over{border-color:var(--accent)!important;background:rgba(229,62,62,.02)!important}
 [data-theme="light"] .dz h3{color:#12132a!important}
 [data-theme="light"] .dz p{color:#52546e!important}
@@ -344,7 +346,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
 [data-theme="light"] .nav{background:rgba(255,255,255,.97)!important;border-bottom-color:rgba(18,19,42,.08)!important}
 [data-theme="light"] .tool-hero{background:linear-gradient(180deg,#fff 0%,#f7f8fc 100%)!important}
 [data-theme="light"] .tool-hero h1,[data-theme="light"] h1{color:#12132a!important}
-[data-theme="light"] .dz{background:#fff!important;border-color:rgba(18,19,42,.15)!important}
+[data-theme="light"] .dz{background:rgba(255,255,255,.6)!important;border-color:rgba(18,19,42,.09)!important}
 [data-theme="light"] .dz h3{color:#12132a!important}
 [data-theme="light"] .dz p{color:#52546e!important}
 [data-theme="light"] .opts,.wrap .opts{background:#fff!important;border-color:rgba(18,19,42,.1)!important}
@@ -739,6 +741,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
 <div id="toast"></div>
 <script>
 function fmt(b){if(!b)return'0 B';const k=1024,s=['B','KB','MB','GB'],i=Math.floor(Math.log(b)/Math.log(k));return(b/Math.pow(k,i)).toFixed(1)+' '+s[i];}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;');}
 function toast(m,t='ok'){const el=document.getElementById('toast');el.textContent=(t==='err'?'❌ ':t==='warn'?'⚠️ ':'✅ ')+m;el.className='on';setTimeout(()=>el.className='',3500);}
 function prog(on,lbl){const w=document.getElementById('pw');if(!w)return;w.classList[on?'add':'remove']('on');if(lbl){const l=document.getElementById('pl');if(l)l.textContent=lbl;}}
 function pct(p,l){const f=document.getElementById('pf');if(f)f.style.width=p+'%';if(l){const el=document.getElementById('pl');if(el)el.textContent=l;}}
@@ -767,7 +770,7 @@ setupDZ('dz','fi',added=>{
 function renderFiles(){
   const fl=document.getElementById('fl');
   fl.style.display=files.length?'flex':'none';
-  fl.innerHTML=files.map((f,i)=>`<div class="fitem"><span class="fi-ic">📄</span><div class="fi-info"><div class="fi-nm">${f.name}</div><div class="fi-sz">${fmt(f.size)}</div></div><button class="fi-rm" onclick="removeFile(${i})">✕</button></div>`).join('');
+  fl.innerHTML=files.map((f,i)=>`<div class="fitem"><span class="fi-ic">📄</span><div class="fi-info"><div class="fi-nm">${esc(f.name)}</div><div class="fi-sz">${fmt(f.size)}</div></div><button class="fi-rm" onclick="removeFile(${i})">✕</button></div>`).join('');
 }
 function removeFile(i){files.splice(i,1);renderFiles();if(!files.length){document.getElementById('ab').style.display='none';const o=document.getElementById('opts');if(o)o.style.display='none';}}
 function resetTool(){files=[];renderFiles();document.getElementById('ab').style.display='none';const o=document.getElementById('opts');if(o)o.style.display='none';document.getElementById('res').classList.remove('on');document.getElementById('pw').classList.remove('on');}

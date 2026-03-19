@@ -299,6 +299,63 @@
     }, 200);
   }, { passive: true });
 
+
+  /* ─── GLOBAL SECURITY UTILITIES ─────────────────────────────── */
+  (function () {
+    /* Escape HTML entities — use instead of innerHTML with user data */
+    window.ilcEsc = function (s) {
+      return String(s || '')
+        .replace(/&/g,  '&amp;')
+        .replace(/</g,  '&lt;')
+        .replace(/>/g,  '&gt;')
+        .replace(/"/g,  '&quot;')
+        .replace(/'/g,  '&#x27;')
+        .replace(/\//g, '&#x2F;');
+    };
+
+    /* Safe redirect — blocks open redirect attacks */
+    window.ilcSafeHref = function (url) {
+      if (!url || typeof url !== 'string') return '#';
+      var trimmed = url.trim();
+      /* Block absolute external URLs, data:, javascript: */
+      if (/^(https?:\/\/(?!iloveconvert\.vercel\.app)|\/\/|javascript:|data:|vbscript:)/i.test(trimmed)) {
+        return '#';
+      }
+      return url;
+    };
+
+    /* Input sanitizer for text inputs — strip dangerous chars */
+    window.ilcSanitizeInput = function (s) {
+      return String(s || '')
+        .replace(/<[^>]*>/g, '')        /* strip HTML tags */
+        .replace(/javascript:/gi, '')   /* strip js: */
+        .replace(/on\w+\s*=/gi, '')     /* strip event handlers */
+        .trim()
+        .slice(0, 5000);                /* max length */
+    };
+
+    /* Protect all text inputs from basic injection on submit */
+    document.addEventListener('DOMContentLoaded', function () {
+      /* Find all forms and text inputs */
+      var inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="url"], textarea');
+      inputs.forEach(function (inp) {
+        inp.addEventListener('paste', function (e) {
+          /* Allow paste but sanitize on the next tick */
+          setTimeout(function () {
+            var val = inp.value;
+            /* For url inputs, block javascript: protocol */
+            if (inp.type === 'url' || inp.name === 'url' || inp.id.includes('url') || inp.id.includes('URL')) {
+              if (/^javascript:/i.test(val.trim()) || /^data:/i.test(val.trim())) {
+                inp.value = '';
+              }
+            }
+          }, 0);
+        });
+      });
+    });
+
+  }());
+
   /* ─── INJECT GLOBAL CSS ──────────────────────────────────────── */
   function injectCSS() {
     if (document.getElementById('ilc-particle-styles')) return;
@@ -331,24 +388,34 @@
 
       /* Glass for dark bg elements */
       'body:not(.light-mode):not([data-theme="light"]) .dz,',
+      'body:not(.light-mode):not([data-theme="light"]) .i-upload-area {',
+      '  background: rgba(10, 6, 22, 0.55) !important;',
+      '  border-color: rgba(255,255,255,0.08) !important;',
+      '  border-style: dashed !important;',
+      '  box-shadow: none !important;',
+      '}',
       'body:not(.light-mode):not([data-theme="light"]) .opts,',
-      'body:not(.light-mode):not([data-theme="light"]) .i-upload-area,',
       'body:not(.light-mode):not([data-theme="light"]) .how-step,',
       'body:not(.light-mode):not([data-theme="light"]) .wc {',
-      '  background: rgba(12, 8, 28, 0.65) !important;',
-      '  border-color: rgba(120, 80, 255, 0.18) !important;',
-      '  box-shadow: 0 4px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04) !important;',
+      '  background: rgba(12, 8, 28, 0.55) !important;',
+      '  border-color: rgba(120, 80, 255, 0.14) !important;',
+      '  box-shadow: 0 2px 20px rgba(0,0,0,0.2) !important;',
       '}',
 
       /* Glass for light bg elements */
       'body.light-mode .dz, [data-theme="light"] .dz,',
+      'body.light-mode .i-upload-area, [data-theme="light"] .i-upload-area {',
+      '  background: rgba(255,255,255,0.65) !important;',
+      '  border-color: rgba(18,19,42,0.1) !important;',
+      '  border-style: dashed !important;',
+      '  box-shadow: none !important;',
+      '}',
       'body.light-mode .opts, [data-theme="light"] .opts,',
-      'body.light-mode .i-upload-area, [data-theme="light"] .i-upload-area,',
       'body.light-mode .how-step, [data-theme="light"] .how-step,',
       'body.light-mode .wc, [data-theme="light"] .wc {',
-      '  background: rgba(255,255,255,0.72) !important;',
-      '  border-color: rgba(124,58,237,0.12) !important;',
-      '  box-shadow: 0 4px 24px rgba(124,58,237,0.07), inset 0 1px 0 rgba(255,255,255,0.9) !important;',
+      '  background: rgba(255,255,255,0.68) !important;',
+      '  border-color: rgba(124,58,237,0.10) !important;',
+      '  box-shadow: 0 2px 16px rgba(124,58,237,0.05) !important;',
       '}',
 
       /* Nav glass upgrade */

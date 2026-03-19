@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <style>html,body{overflow-x:hidden!important}</style>
+<meta name="google-site-verification" content="CaRLOiNJzL-hIl8BLkF73B7sEqTVoWw4Jdh1FGKftSI"/>
+<meta name="google-adsense-account" content="ca-pub-3911955257661932">
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0"/>
 <title>Tool History — iLoveConvert</title>
@@ -183,10 +185,11 @@ function renderPage() {
   var html = '';
   items.forEach(function (h) {
     var hasUrl = !!(h.result_url);
-    html += '<div class="hist-card" id="hc-'+h.id+'">' +
+    var safeId = String(h.id||'').replace(/[^a-zA-Z0-9_-]/g,'');
+    html += '<div class="hist-card" id="hc-'+safeId+'">' +
       '<div class="hist-ic">'+getIcon(h.tool_name)+'</div>' +
       '<div class="hist-body">' +
-        '<div class="hist-tool">'+(h.tool_name||'Tool')+'</div>' +
+        '<div class="hist-tool">'+escHtml(h.tool_name||'Tool')+'</div>' +
         '<div class="hist-meta">' +
           (h.file_name?'<span class="hist-file">'+escHtml(h.file_name)+'</span>':'') +
           (h.action_type?'<span class="hist-badge">'+escHtml(h.action_type)+'</span>':'') +
@@ -218,7 +221,15 @@ function renderPage() {
 
 function goPage(n){curPage=n;renderPage();window.scrollTo({top:0,behavior:'smooth'});}
 
-function escHtml(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function escHtml(s){
+  return(s||'').toString()
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#x27;')
+    .replace(/\//g,'&#x2F;');
+}
 
 function filterHistory() {
   var q   = document.getElementById('searchInput').value.toLowerCase();

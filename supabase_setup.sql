@@ -11,10 +11,10 @@ CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 CREATE TABLE IF NOT EXISTS public.tool_history (
   id          UUID        PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id     UUID        NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
-  tool_name   TEXT        NOT NULL,
-  file_name   TEXT,
-  action_type TEXT,
-  result_url  TEXT,
+  tool_name   TEXT        NOT NULL CHECK (length(tool_name) <= 100 AND tool_name ~ '^[a-zA-Z0-9_\-]+$'),
+  file_name   TEXT        CHECK (file_name IS NULL OR length(file_name) <= 255),
+  action_type TEXT        CHECK (action_type IS NULL OR length(action_type) <= 50),
+  result_url  TEXT        CHECK (result_url IS NULL OR (length(result_url) <= 500 AND result_url !~ 'javascript:')),
   created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
@@ -27,10 +27,11 @@ CREATE INDEX IF NOT EXISTS idx_tool_history_tool_name  ON public.tool_history(to
 CREATE TABLE IF NOT EXISTS public.favorite_tools (
   id         UUID        PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id    UUID        NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
-  tool_name  TEXT        NOT NULL,
+  tool_name  TEXT        NOT NULL CHECK (length(tool_name) <= 100 AND tool_name ~ '^[a-zA-Z0-9_\-]+$'),
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  -- Prevent duplicate favourites per user
-  UNIQUE(user_id, tool_name)
+  UNIQUE(user_id, tool_name),
+  -- Max 100 favourites per user (prevent abuse)
+  CONSTRAINT max_favs_check CHECK (true)
 );
 
 -- Index for fast per-user queries
@@ -133,4 +134,42 @@ CREATE POLICY "Users delete own favourites"
 --    Redirect URLs: https://iloveconvert.vercel.app/**
 -- ═══════════════════════════════════════════════════════════════
 
-SELECT 'Setup complete! Tables and RLS policies created.' AS status;
+
+-- ── STEP 10: Rate limiting — max 1000 history rows per user ──
+CREATE OR REPLACE FUNCTION public.enforce_history_limit()
+RETURNS TRIGGER LANGUAGE plpgsql SECURITY DEFINER AS $$
+BEGIN
+  DELETE FROM public.tool_history
+  WHERE user_id = NEW.user_id
+    AND id NOT IN (
+      SELECT id FROM public.tool_history
+      WHERE user_id = NEW.user_id
+      ORDER BY created_at DESC
+      LIMIT 999
+    );
+  RETURN NEW;
+END;
+$$;
+
+DROP TRIGGER IF EXISTS trigger_history_limit ON public.tool_history;
+CREATE TRIGGER trigger_history_limit
+  AFTER INSERT ON public.tool_history
+  FOR EACH ROW EXECUTE FUNCTION public.enforce_history_limit();
+
+-- ── STEP 11: Max 100 favourites per user ─────────────────────
+CREATE OR REPLACE FUNCTION public.enforce_favs_limit()
+RETURNS TRIGGER LANGUAGE plpgsql SECURITY DEFINER AS $$
+BEGIN
+  IF (SELECT COUNT(*) FROM public.favorite_tools WHERE user_id = NEW.user_id) >= 100 THEN
+    RAISE EXCEPTION 'Maximum 100 favourites allowed per user';
+  END IF;
+  RETURN NEW;
+END;
+$$;
+
+DROP TRIGGER IF EXISTS trigger_favs_limit ON public.favorite_tools;
+CREATE TRIGGER trigger_favs_limit
+  BEFORE INSERT ON public.favorite_tools
+  FOR EACH ROW EXECUTE FUNCTION public.enforce_favs_limit();
+
+SELECT 'Setup complete! Tables, RLS policies, and rate limits created.' AS status;
