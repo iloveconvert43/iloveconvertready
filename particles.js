@@ -377,40 +377,45 @@
       'body:not(.light-mode):not([data-theme="light"]) { background-color: #05050c !important; }',
       'body.light-mode, [data-theme="light"] body, html[data-theme="light"] body { background-color: #f5f4ff !important; }',
 
-      /* === GLASS MORPHISM — DARK === */
-      '.i-card, .tool-card, .i-upload-area, .i-box, .i-result,',
-      '.i-faq-item, .i-hero, .i-opts, .i-seo-section,',
-      '.dz, .opts, .res, .prev-card, #prev-card, #i-prev-card,',
+      /* === GLASS MORPHISM — cards only, NOT upload zones === */
+      '.i-card, .tool-card, .i-box, .i-result,',
+      '.i-faq-item, .i-hero, .i-seo-section,',
       '.how-step, .wc, .ft-col { ',
       '  backdrop-filter: blur(14px) saturate(1.3) !important;',
       '  -webkit-backdrop-filter: blur(14px) saturate(1.3) !important;',
       '}',
 
-      /* Glass for dark bg elements */
-      'body:not(.light-mode):not([data-theme="light"]) .dz,',
-      'body:not(.light-mode):not([data-theme="light"]) .i-upload-area {',
+      /* Upload zone — FULLY transparent, NO blur, NO background ever */
+      '.dz, .i-upload-area, .i-opts, .opts {',
       '  background: transparent !important;',
-      '  border: 1.5px dashed rgba(255,255,255,0.16) !important;',
+      '  backdrop-filter: none !important;',
+      '  -webkit-backdrop-filter: none !important;',
       '  box-shadow: none !important;',
       '}',
-      'body:not(.light-mode):not([data-theme="light"]) .opts,',
-      'body:not(.light-mode):not([data-theme="light"]) .how-step,',
-      'body:not(.light-mode):not([data-theme="light"]) .wc {',
+
+      /* Dark mode upload zone border */
+      'body:not([data-theme="light"]) .dz,',
+      'body:not([data-theme="light"]) .i-upload-area {',
+      '  border: 1.5px dashed rgba(255,255,255,0.18) !important;',
+      '}',
+
+      /* Light mode upload zone border */
+      '[data-theme="light"] .dz,',
+      '[data-theme="light"] .i-upload-area {',
+      '  border: 1.5px dashed rgba(100,80,200,0.20) !important;',
+      '}',
+
+      /* Cards dark mode */
+      'body:not([data-theme="light"]) .how-step,',
+      'body:not([data-theme="light"]) .wc {',
       '  background: rgba(12, 8, 28, 0.55) !important;',
       '  border-color: rgba(120, 80, 255, 0.14) !important;',
       '  box-shadow: 0 2px 20px rgba(0,0,0,0.2) !important;',
       '}',
 
-      /* Glass for light bg elements */
-      'body.light-mode .dz, [data-theme="light"] .dz,',
-      'body.light-mode .i-upload-area, [data-theme="light"] .i-upload-area {',
-      '  background: rgba(255,255,255,0.30) !important;',
-      '  border: 1.5px dashed rgba(100,80,200,0.18) !important;',
-      '  box-shadow: none !important;',
-      '}',
-      'body.light-mode .opts, [data-theme="light"] .opts,',
-      'body.light-mode .how-step, [data-theme="light"] .how-step,',
-      'body.light-mode .wc, [data-theme="light"] .wc {',
+      /* Cards light mode */
+      '[data-theme="light"] .how-step,',
+      '[data-theme="light"] .wc {',
       '  background: rgba(255,255,255,0.68) !important;',
       '  border-color: rgba(124,58,237,0.10) !important;',
       '  box-shadow: 0 2px 16px rgba(124,58,237,0.05) !important;',
@@ -435,9 +440,14 @@
       '  * { max-width: 100%; }',
       '  img, video, canvas:not(#ilcParticleCanvas), iframe { max-width: 100% !important; }',
       /* Reduce blur on mobile for perf */
-      '  .i-card, .tool-card, .dz, .opts, .how-step, .wc {',
+      '  .i-card, .tool-card, .how-step, .wc {',
       '    backdrop-filter: blur(8px) !important;',
       '    -webkit-backdrop-filter: blur(8px) !important;',
+      '  }',
+      '  .dz, .opts, .i-upload-area {',
+      '    backdrop-filter: none !important;',
+      '    -webkit-backdrop-filter: none !important;',
+      '    background: transparent !important;',
       '  }',
       '  .nav, #siteNav, #mainNav, .i-site-nav {',
       '    backdrop-filter: blur(16px) !important;',
