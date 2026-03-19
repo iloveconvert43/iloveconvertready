@@ -389,9 +389,8 @@
       /* Glass for dark bg elements */
       'body:not(.light-mode):not([data-theme="light"]) .dz,',
       'body:not(.light-mode):not([data-theme="light"]) .i-upload-area {',
-      '  background: rgba(10, 6, 22, 0.55) !important;',
-      '  border-color: rgba(255,255,255,0.08) !important;',
-      '  border-style: dashed !important;',
+      '  background: transparent !important;',
+      '  border: 1.5px dashed rgba(255,255,255,0.16) !important;',
       '  box-shadow: none !important;',
       '}',
       'body:not(.light-mode):not([data-theme="light"]) .opts,',
@@ -405,9 +404,8 @@
       /* Glass for light bg elements */
       'body.light-mode .dz, [data-theme="light"] .dz,',
       'body.light-mode .i-upload-area, [data-theme="light"] .i-upload-area {',
-      '  background: rgba(255,255,255,0.65) !important;',
-      '  border-color: rgba(18,19,42,0.1) !important;',
-      '  border-style: dashed !important;',
+      '  background: rgba(255,255,255,0.30) !important;',
+      '  border: 1.5px dashed rgba(100,80,200,0.18) !important;',
       '  box-shadow: none !important;',
       '}',
       'body.light-mode .opts, [data-theme="light"] .opts,',
@@ -426,8 +424,8 @@
 
       /* Upload hover glow */
       '.dz:hover, .dz.drag, .dz.over {',
-      '  border-color: rgba(229,62,62,0.5) !important;',
-      '  box-shadow: 0 0 0 3px rgba(229,62,62,0.12), 0 8px 40px rgba(124,58,237,0.2) !important;',
+      '  border-color: rgba(229,62,62,0.35) !important;',
+      '  box-shadow: 0 0 0 3px rgba(229,62,62,0.07) !important;',
       '}',
 
       /* === MOBILE FIXES === */
