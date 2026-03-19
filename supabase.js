@@ -6,8 +6,8 @@
 (function () {
   'use strict';
 
-  var SUPABASE_URL  = 'https://azxtfybmjpdgcfbhkutk.supabase.co';
-  var SUPABASE_ANON = 'sb_publishable_TZmUouHl_MXze5cWA9m-0Q_tAQ0I1qU';
+  var SUPABASE_URL  = 'https://adwluncmthfsahodttsj.supabase.co';
+  var SUPABASE_ANON = 'sb_publishable_2TEagAw1idvBIJfMjIjTUA_tGXciGqT';
 
   function init(lib) {
     try {
